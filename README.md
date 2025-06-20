@@ -1,6 +1,12 @@
-# Core Entities and Relationships
+# MongoDB ERD Core Entities and Relationships
+
+
 <b> 1. Users </b> <br>
-Attributes: UserID (PK), Username, PasswordHash, Role (Doctor, Nurse, Admin, Patient), Email, Phone<br>
+ <br>
+http://35.247.54.23:3000/add_Users?userId=001&username=Alice&email=alice@example.com <br>
+http://35.247.54.23:3000/Users?userId=002&username=""&email="" <br>
+ <br>
+Attributes: UserID (PK), Username, PasswordHash, Role (Doctor, Nurse, Admin, Patient), Email, Phone<br> <br>
 Relationships:<br>
 One-to-many with Appointments<br>
 One-to-many with Messages (for chat)<br>
