@@ -1,38 +1,101 @@
+check in the MogoDB directory for the models and the CURL Endpoint commands (README) <<<<<<<<<<<<<<<<<<<<<<<
+
+
 # MongoDB ERD Core Entities and Relationships
 
+## 1. Users
+Attributes: 
+- **UserID** (PK)
+- Username
+- PasswordHash
+- Role (Doctor, Nurse, Admin, Patient)
+- Email
+- Phone
 
-<b> 1. Users </b> <br>
- <br>
-http://35.247.54.23:3000/add_Users?userId=001&username=Alice&email=alice@example.com <br>
-http://35.247.54.23:3000/Users?userId=002&username=""&email="" <br>
- <br>
-Attributes: UserID (PK), Username, PasswordHash, Role (Doctor, Nurse, Admin, Patient), Email, Phone<br> <br>
-Relationships:<br>
-One-to-many with Appointments<br>
-One-to-many with Messages (for chat)<br>
-One-to-many with Notifications<br>
-<b> 2. Patients </b> <br>
-Attributes: PatientID (PK), UserID (FK), Name, DOB, Gender, Address, ContactInfo, MedicalHistory (file reference)<br>
-Relationships:<br>
-One-to-many with Appointments<br>
-One-to-many with Vitals<br>
-One-to-many with Prescriptions<br>
-<b> 3. Appointments </b> <br>
-Attributes: AppointmentID (PK), PatientID (FK), DoctorID (FK), DateTime, Status (Scheduled, Cancelled, Completed), Notes<br>
-Relationships:<br>
-Many-to-one with Patients<br>
-Many-to-one with Users (Doctors)<br>
-<b> 4. Inventory </b> <br>
-Attributes: ItemID (PK), Name, Quantity, Threshold, LastUpdated<br>
-Relationships:<br>
-One-to-many with InventoryLogs<br>
-<b> 5. InventoryLogs </b> <br>
-Attributes: LogID (PK), ItemID (FK), ChangeAmount, Timestamp, UserID (FK), Reason<br>
-<b> 6. Vitals </b> <br>
-Attributes: VitalID (PK), PatientID (FK), Timestamp, HeartRate, BloodPressure, Temperature, OxygenLevel<br>
-<b> 7. Messages (Chat) </b> <br>
-Attributes: MessageID (PK), SenderID (FK), ReceiverID (FK), Timestamp, Content<br>
-<b> 8. Notifications </b> <br>
-Attributes: NotificationID (PK), UserID (FK), Message, Timestamp, IsRead<br>
-<b> 9. Reports </b> <br>
-Attributes: ReportID (PK), Type (Visits, Ailments, Medications), GeneratedBy (UserID), Timestamp, FilePath<br>
+Relationships:
+- One-to-many with Appointments
+- One-to-many with Messages (for chat)
+- One-to-many with Notifications
+
+## 2. Patients
+Attributes: 
+- **PatientID** (PK)
+- UserID (FK)
+- Name
+- DOB
+- Gender
+- Address
+- ContactInfo
+- MedicalHistory (file reference)
+
+Relationships:
+- One-to-many with Appointments
+- One-to-many with Vitals
+- One-to-many with Prescriptions
+
+## 3. Appointments
+Attributes: 
+- **AppointmentID** (PK)
+- PatientID (FK)
+- DoctorID (FK)
+- DateTime
+- Status (Scheduled, Cancelled, Completed)
+- Notes
+
+Relationships:
+- Many-to-one with Patients
+- Many-to-one with Users (Doctors)
+
+## 4. Inventory
+Attributes: 
+- **ItemID** (PK)
+- Name
+- Quantity
+- Threshold
+- LastUpdated
+
+Relationships:
+- One-to-many with InventoryLogs
+
+## 5. InventoryLogs
+Attributes: 
+- **LogID** (PK)
+- ItemID (FK)
+- ChangeAmount
+- Timestamp
+- UserID (FK)
+- Reason
+
+## 6. Vitals
+Attributes: 
+- **VitalID** (PK)
+- PatientID (FK)
+- Timestamp
+- HeartRate
+- BloodPressure
+- Temperature
+- OxygenLevel
+
+## 7. Messages (Chat)
+Attributes: 
+- **MessageID** (PK)
+- SenderID (FK)
+- ReceiverID (FK)
+- Timestamp
+- Content
+
+## 8. Notifications
+Attributes: 
+- **NotificationID** (PK)
+- UserID (FK)
+- Message
+- Timestamp
+- IsRead
+
+## 9. Reports
+Attributes: 
+- **ReportID** (PK)
+- Type (Visits, Ailments, Medications)
+- GeneratedBy (UserID)
+- Timestamp
+- FilePath
