@@ -1,4 +1,7 @@
+Server is Up! <br>
+<br>
 check in the MogoDB directory for the models and the CURL Endpoint commands (README) <<<<<<<<<<<<<<<<<<<<<<<
+<br>
 
 
 # MongoDB ERD Core Entities and Relationships
