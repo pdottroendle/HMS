@@ -1,3 +1,8 @@
+examples search<br>
+http://xlynseyes.ddns.net:3001/Inventory?ItemID=I002<br>
+http://xlynseyes.ddns.net:3001/Inventory?Name=Bandages<br>
+http://xlynseyes.ddns.net:3001/Inventory?ItemID=I001&Name=Bandages<br>
+<br><br>
 # Add
 curl "http://xlynseyes.ddns.net:3001/export_db/add_Users?UserID=003&Username=Charlie&PasswordHash=abc123&Role=Admin&Email=charlie@example.com&Phone=789.000.0000"
 
