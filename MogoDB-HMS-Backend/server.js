@@ -38,16 +38,23 @@ mongoose.connect('mongodb://localhost:27017/hospital_management', {
 // Add User
 app.get('/add_Users', async (req, res) => {
   const { UserID, Username, PasswordHash, Role, Email, Phone } = req.query;
+
   if (!UserID || !Username || !PasswordHash || !Role || !Email || !Phone) {
     return res.status(400).json({ error: 'All fields are required' });
   }
+
   try {
-    await User.create({ UserID, Username, PasswordHash, Role, Email, Phone });
-    res.status(200).json({ message: 'User added successfully!' });
+    await User.findOneAndUpdate(
+      { UserID }, // search condition
+      { Username, PasswordHash, Role, Email, Phone }, // update fields
+      { upsert: true, new: true } // create if not exists, return new doc
+    );
+    res.status(200).json({ message: 'User added or updated successfully!' });
   } catch (err) {
-    res.status(500).json({ error: 'Failed to add user', details: err.message });
+    res.status(500).json({ error: 'Failed to add or update user', details: err.message });
   }
 });
+
 
 // Search Users
 app.get('/Users', async (req, res) => {
@@ -72,7 +79,11 @@ app.get('/add_Patients', async (req, res) => {
     return res.status(400).json({ error: 'All fields are required' });
   }
   try {
-    await Patient.create({ PatientID, UserID, Name, DOB, Gender, Address, ContactInfo, MedicalHistory });
+     await Patient.findOneAndUpdate(
+      { PatientID },
+      { UserID, Name, DOB, Gender, Address, ContactInfo, MedicalHistory },
+      { upsert: true, new: true }
+    ); 
     res.status(200).json({ message: 'Patient added successfully!' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to add patient', details: err.message });
@@ -101,7 +112,11 @@ app.get('/add_Appointments', async (req, res) => {
     return res.status(400).json({ error: 'All fields are required' });
   }
   try {
-    await Appointment.create({ AppointmentID, PatientID, DoctorID, DateTime, Status, Notes });
+     await Appointment.findOneAndUpdate(
+      { AppointmentID },
+      { PatientID, DoctorID, DateTime, Status, Notes },
+      { upsert: true, new: true }
+    );    
     res.status(200).json({ message: 'Appointment added successfully!' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to add appointment', details: err.message });
@@ -126,16 +141,23 @@ app.get('/Appointments', async (req, res) => {
 
 app.get('/add_Inventory', async (req, res) => {
   const { ItemID, Name, Quantity, Threshold, LastUpdated } = req.query;
+
   if (!ItemID || !Name || !Quantity || !Threshold || !LastUpdated) {
     return res.status(400).json({ error: 'All fields are required' });
   }
+
   try {
-    await Inventory.create({ ItemID, Name, Quantity, Threshold, LastUpdated });
-    res.status(200).json({ message: 'Inventory item added successfully!' });
+    await Inventory.findOneAndUpdate(
+      { ItemID },
+      { Name, Quantity, Threshold, LastUpdated },
+      { upsert: true, new: true }
+    );
+    res.status(200).json({ message: 'Inventory item added or updated successfully!' });
   } catch (err) {
-    res.status(500).json({ error: 'Failed to add inventory item', details: err.message });
+    res.status(500).json({ error: 'Failed to add or update inventory item', details: err.message });
   }
 });
+
 
 app.get('/Inventory', async (req, res) => {
   const query = {};
@@ -158,7 +180,11 @@ app.get('/add_InventoryLogs', async (req, res) => {
     return res.status(400).json({ error: 'All fields are required' });
   }
   try {
-    await InventoryLog.create({ LogID, ItemID, ChangeAmount, Timestamp, UserID, Reason });
+    await InventoryLog.findOneAndUpdate(
+      { LogID },
+      { ItemID, ChangeAmount, Timestamp, UserID, Reason },
+      { upsert: true, new: true }
+    );
     res.status(200).json({ message: 'Inventory log added successfully!' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to add inventory log', details: err.message });
@@ -186,7 +212,11 @@ app.get('/add_Vitals', async (req, res) => {
     return res.status(400).json({ error: 'All fields are required' });
   }
   try {
-    await Vital.create({ VitalID, PatientID, Timestamp, HeartRate, BloodPressure, Temperature, OxygenLevel });
+    await Vital.findOneAndUpdate(
+      { VitalID },
+      { PatientID, Timestamp, HeartRate, BloodPressure, Temperature, OxygenLevel  },
+      { upsert: true, new: true }
+    );
     res.status(200).json({ message: 'Vital record added successfully!' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to add vital record', details: err.message });
@@ -214,8 +244,12 @@ app.get('/add_Messages', async (req, res) => {
     return res.status(400).json({ error: 'All fields are required' });
   }
   try {
-    await Message.create({ MessageID, SenderID, ReceiverID, Timestamp, Content });
-    res.status(200).json({ message: 'Message added successfully!' });
+    await Message.findOneAndUpdate(
+      { MessageID },
+      { SenderID, ReceiverID, Timestamp, Content  },
+      { upsert: true, new: true }
+    );   
+ res.status(200).json({ message: 'Message added successfully!' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to add message', details: err.message });
   }
@@ -242,8 +276,13 @@ app.get('/add_Notifications', async (req, res) => {
     return res.status(400).json({ error: 'All fields are required' });
   }
   try {
-    await Notification.create({ NotificationID, UserID, Message, Timestamp, IsRead });
-    res.status(200).json({ message: 'Notification added successfully!' });
+ await Notification.findOneAndUpdate(
+      { NotificationID },
+      { UserID, Message, Timestamp, IsRead },
+      { upsert: true, new: true }
+    );   
+    
+res.status(200).json({ message: 'Notification added successfully!' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to add notification', details: err.message });
   }
@@ -270,8 +309,12 @@ app.get('/add_Reports', async (req, res) => {
     return res.status(400).json({ error: 'All fields are required' });
   }
   try {
-    await Report.create({ ReportID, Type, GeneratedBy, Timestamp, FilePath });
-    res.status(200).json({ message: 'Report added successfully!' });
+   await Report.findOneAndUpdate(
+      { ReportID },
+      { Type, GeneratedBy, Timestamp, FilePath },
+      { upsert: true, new: true }
+    );      
+ res.status(200).json({ message: 'Report added successfully!' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to add report', details: err.message });
   }
