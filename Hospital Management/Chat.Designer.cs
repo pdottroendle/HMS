@@ -34,8 +34,8 @@
             this.label_history = new System.Windows.Forms.Label();
             this.label_MessageInput = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonChatSend = new System.Windows.Forms.Button();
-            this.buttonChatRefresh = new System.Windows.Forms.Button();
+            this.buttonChatAdd = new System.Windows.Forms.Button();
+            this.buttonChatSearch = new System.Windows.Forms.Button();
             this.labelChatStatus = new System.Windows.Forms.Label();
             this.statusStripChat = new System.Windows.Forms.StatusStrip();
             this.SuspendLayout();
@@ -90,23 +90,23 @@
             this.textBox1.Size = new System.Drawing.Size(205, 29);
             this.textBox1.TabIndex = 5;
             // 
-            // buttonChatSend
+            // buttonChatAdd
             // 
-            this.buttonChatSend.Location = new System.Drawing.Point(216, 402);
-            this.buttonChatSend.Name = "buttonChatSend";
-            this.buttonChatSend.Size = new System.Drawing.Size(201, 42);
-            this.buttonChatSend.TabIndex = 6;
-            this.buttonChatSend.Text = "Send";
-            this.buttonChatSend.UseVisualStyleBackColor = true;
+            this.buttonChatAdd.Location = new System.Drawing.Point(216, 402);
+            this.buttonChatAdd.Name = "buttonChatAdd";
+            this.buttonChatAdd.Size = new System.Drawing.Size(201, 42);
+            this.buttonChatAdd.TabIndex = 6;
+            this.buttonChatAdd.Text = "Add";
+            this.buttonChatAdd.UseVisualStyleBackColor = true;
             // 
-            // buttonChatRefresh
+            // buttonChatSearch
             // 
-            this.buttonChatRefresh.Location = new System.Drawing.Point(460, 402);
-            this.buttonChatRefresh.Name = "buttonChatRefresh";
-            this.buttonChatRefresh.Size = new System.Drawing.Size(201, 42);
-            this.buttonChatRefresh.TabIndex = 6;
-            this.buttonChatRefresh.Text = "Refresh";
-            this.buttonChatRefresh.UseVisualStyleBackColor = true;
+            this.buttonChatSearch.Location = new System.Drawing.Point(583, 402);
+            this.buttonChatSearch.Name = "buttonChatSearch";
+            this.buttonChatSearch.Size = new System.Drawing.Size(201, 42);
+            this.buttonChatSearch.TabIndex = 6;
+            this.buttonChatSearch.Text = "Search";
+            this.buttonChatSearch.UseVisualStyleBackColor = true;
             // 
             // labelChatStatus
             // 
@@ -133,8 +133,8 @@
             this.ClientSize = new System.Drawing.Size(1398, 597);
             this.Controls.Add(this.statusStripChat);
             this.Controls.Add(this.labelChatStatus);
-            this.Controls.Add(this.buttonChatRefresh);
-            this.Controls.Add(this.buttonChatSend);
+            this.Controls.Add(this.buttonChatSearch);
+            this.Controls.Add(this.buttonChatAdd);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label_MessageInput);
             this.Controls.Add(this.label_history);
@@ -156,8 +156,8 @@
         private System.Windows.Forms.Label label_history;
         private System.Windows.Forms.Label label_MessageInput;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button buttonChatSend;
-        private System.Windows.Forms.Button buttonChatRefresh;
+        private System.Windows.Forms.Button buttonChatAdd;
+        private System.Windows.Forms.Button buttonChatSearch;
         private System.Windows.Forms.Label labelChatStatus;
         private System.Windows.Forms.StatusStrip statusStripChat;
     }

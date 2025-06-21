@@ -31,8 +31,8 @@
             this.comboBoxReportType = new System.Windows.Forms.ComboBox();
             this.dataGridView_ReportResults = new System.Windows.Forms.DataGridView();
             this.label_ReportType = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button_Close = new System.Windows.Forms.Button();
+            this.buttonDataAdd = new System.Windows.Forms.Button();
+            this.buttonDataSearch = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label_Start = new System.Windows.Forms.Label();
             this.label_End = new System.Windows.Forms.Label();
@@ -68,23 +68,23 @@
             this.label_ReportType.TabIndex = 2;
             this.label_ReportType.Text = "Report Type:";
             // 
-            // button1
+            // buttonDataAdd
             // 
-            this.button1.Location = new System.Drawing.Point(585, 506);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 55);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Generate Report";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonDataAdd.Location = new System.Drawing.Point(585, 506);
+            this.buttonDataAdd.Name = "buttonDataAdd";
+            this.buttonDataAdd.Size = new System.Drawing.Size(180, 55);
+            this.buttonDataAdd.TabIndex = 3;
+            this.buttonDataAdd.Text = "Add";
+            this.buttonDataAdd.UseVisualStyleBackColor = true;
             // 
-            // button_Close
+            // buttonDataSearch
             // 
-            this.button_Close.Location = new System.Drawing.Point(922, 506);
-            this.button_Close.Name = "button_Close";
-            this.button_Close.Size = new System.Drawing.Size(161, 55);
-            this.button_Close.TabIndex = 3;
-            this.button_Close.Text = "Close";
-            this.button_Close.UseVisualStyleBackColor = true;
+            this.buttonDataSearch.Location = new System.Drawing.Point(922, 506);
+            this.buttonDataSearch.Name = "buttonDataSearch";
+            this.buttonDataSearch.Size = new System.Drawing.Size(161, 55);
+            this.buttonDataSearch.TabIndex = 3;
+            this.buttonDataSearch.Text = "Search";
+            this.buttonDataSearch.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker1
             // 
@@ -121,9 +121,9 @@
             // statusStrip_Status
             // 
             this.statusStrip_Status.ImageScalingSize = new System.Drawing.Size(28, 28);
-            this.statusStrip_Status.Location = new System.Drawing.Point(0, 563);
+            this.statusStrip_Status.Location = new System.Drawing.Point(0, 574);
             this.statusStrip_Status.Name = "statusStrip_Status";
-            this.statusStrip_Status.Size = new System.Drawing.Size(1489, 33);
+            this.statusStrip_Status.Size = new System.Drawing.Size(1489, 22);
             this.statusStrip_Status.TabIndex = 6;
             this.statusStrip_Status.Text = "statusStrip1";
             // 
@@ -137,8 +137,8 @@
             this.Controls.Add(this.label_Start);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button_Close);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonDataSearch);
+            this.Controls.Add(this.buttonDataAdd);
             this.Controls.Add(this.label_ReportType);
             this.Controls.Add(this.dataGridView_ReportResults);
             this.Controls.Add(this.comboBoxReportType);
@@ -155,8 +155,8 @@
         private System.Windows.Forms.ComboBox comboBoxReportType;
         private System.Windows.Forms.DataGridView dataGridView_ReportResults;
         private System.Windows.Forms.Label label_ReportType;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button_Close;
+        private System.Windows.Forms.Button buttonDataAdd;
+        private System.Windows.Forms.Button buttonDataSearch;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label_Start;
         private System.Windows.Forms.Label label_End;

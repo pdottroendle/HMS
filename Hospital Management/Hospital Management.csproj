@@ -292,23 +292,11 @@
     <Compile Include="Chat.Designer.cs">
       <DependentUpon>Chat.cs</DependentUpon>
     </Compile>
-    <Compile Include="DashBoard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DashBoard.Designer.cs">
-      <DependentUpon>DashBoard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DashboardData.cs" />
     <Compile Include="DataAnalytics.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataAnalytics.Designer.cs">
       <DependentUpon>DataAnalytics.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -316,21 +304,20 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="HospitalContext.cs" />
     <Compile Include="Inventory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Inventory.Designer.cs">
       <DependentUpon>Inventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryItem.cs" />
-    <Compile Include="InventoryLog.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="InventoryData.cs" />
+    <Compile Include="InventoryLog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="InventoryLog.Designer.cs">
+      <DependentUpon>InventoryLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="InventoryLogData.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Notification.cs">
       <SubType>Form</SubType>
@@ -338,7 +325,7 @@
     <Compile Include="Notification.Designer.cs">
       <DependentUpon>Notification.cs</DependentUpon>
     </Compile>
-    <Compile Include="NotificationMessage.cs" />
+    <Compile Include="NotificationData.cs" />
     <Compile Include="Patient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -346,31 +333,28 @@
       <DependentUpon>Patient.cs</DependentUpon>
     </Compile>
     <Compile Include="PatientData.cs" />
-    <Compile Include="PatientMonotoring.cs">
+    <Compile Include="User.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PatientMonotoring.Designer.cs">
-      <DependentUpon>PatientMonotoring.cs</DependentUpon>
+    <Compile Include="User.Designer.cs">
+      <DependentUpon>User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vital.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vital.Designer.cs">
+      <DependentUpon>Vital.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Register.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Register.Designer.cs">
-      <DependentUpon>Register.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReportRequest.cs" />
-    <Compile Include="User.cs" />
-    <Compile Include="Vital.cs" />
+    <Compile Include="ReportData.cs" />
+    <Compile Include="UserData.cs" />
+    <Compile Include="VitalData.cs" />
     <EmbeddedResource Include="Appoinment.resx">
       <DependentUpon>Appoinment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Chat.resx">
       <DependentUpon>Chat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DashBoard.resx">
-      <DependentUpon>DashBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataAnalytics.resx">
       <DependentUpon>DataAnalytics.cs</DependentUpon>
@@ -381,8 +365,8 @@
     <EmbeddedResource Include="Inventory.resx">
       <DependentUpon>Inventory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="InventoryLog.resx">
+      <DependentUpon>InventoryLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Notification.resx">
       <DependentUpon>Notification.cs</DependentUpon>
@@ -390,8 +374,11 @@
     <EmbeddedResource Include="Patient.resx">
       <DependentUpon>Patient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PatientMonotoring.resx">
-      <DependentUpon>PatientMonotoring.cs</DependentUpon>
+    <EmbeddedResource Include="User.resx">
+      <DependentUpon>User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vital.resx">
+      <DependentUpon>Vital.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -402,20 +389,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Register.resx">
-      <DependentUpon>Register.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

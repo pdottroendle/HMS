@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Hospital_Management
 {
-    public class Message
+    public class NotificationData
     {
-        public int MessageID { get; set; }
-        public int SenderID { get; set; }
-        public int ReceiverID { get; set; }
+        public int NotificationID { get; set; }
+        public int UserID { get; set; }
+        public string Message { get; set; }
         public DateTime Timestamp { get; set; }
-        public string Content { get; set; }
+        public bool IsRead { get; set; }
+
     }
 }

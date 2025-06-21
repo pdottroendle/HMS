@@ -45,9 +45,7 @@
             this.textBox_medicalHistory = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button_patientAdd = new System.Windows.Forms.Button();
-            this.button_patientEdit = new System.Windows.Forms.Button();
-            this.button_patientDelete = new System.Windows.Forms.Button();
-            this.button_patientClear = new System.Windows.Forms.Button();
+            this.button_patientSearch = new System.Windows.Forms.Button();
             this.dateTimePicker_DOB = new System.Windows.Forms.DateTimePicker();
             this.label_ID = new System.Windows.Forms.Label();
             this.textBox_patientID = new System.Windows.Forms.TextBox();
@@ -120,7 +118,7 @@
             // label_medical
             // 
             this.label_medical.AutoSize = true;
-            this.label_medical.Location = new System.Drawing.Point(35, 428);
+            this.label_medical.Location = new System.Drawing.Point(12, 424);
             this.label_medical.Name = "label_medical";
             this.label_medical.Size = new System.Drawing.Size(143, 25);
             this.label_medical.TabIndex = 7;
@@ -184,47 +182,24 @@
             this.dataGridView1.RowTemplate.Height = 31;
             this.dataGridView1.Size = new System.Drawing.Size(825, 428);
             this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button_patientAdd
             // 
-            this.button_patientAdd.Location = new System.Drawing.Point(478, 493);
+            this.button_patientAdd.Location = new System.Drawing.Point(610, 498);
             this.button_patientAdd.Name = "button_patientAdd";
             this.button_patientAdd.Size = new System.Drawing.Size(104, 45);
             this.button_patientAdd.TabIndex = 11;
             this.button_patientAdd.Text = "Add";
             this.button_patientAdd.UseVisualStyleBackColor = true;
-            this.button_patientAdd.Click += new System.EventHandler(this.button_patientAdd_Click);
             // 
-            // button_patientEdit
+            // button_patientSearch
             // 
-            this.button_patientEdit.Location = new System.Drawing.Point(658, 493);
-            this.button_patientEdit.Name = "button_patientEdit";
-            this.button_patientEdit.Size = new System.Drawing.Size(105, 45);
-            this.button_patientEdit.TabIndex = 12;
-            this.button_patientEdit.Text = "Edit";
-            this.button_patientEdit.UseVisualStyleBackColor = true;
-            this.button_patientEdit.Click += new System.EventHandler(this.button_patientEdit_Click);
-            // 
-            // button_patientDelete
-            // 
-            this.button_patientDelete.Location = new System.Drawing.Point(854, 493);
-            this.button_patientDelete.Name = "button_patientDelete";
-            this.button_patientDelete.Size = new System.Drawing.Size(107, 46);
-            this.button_patientDelete.TabIndex = 13;
-            this.button_patientDelete.Text = "Delete";
-            this.button_patientDelete.UseVisualStyleBackColor = true;
-            this.button_patientDelete.Click += new System.EventHandler(this.button_patientDelete_Click);
-            // 
-            // button_patientClear
-            // 
-            this.button_patientClear.Location = new System.Drawing.Point(1037, 493);
-            this.button_patientClear.Name = "button_patientClear";
-            this.button_patientClear.Size = new System.Drawing.Size(104, 45);
-            this.button_patientClear.TabIndex = 14;
-            this.button_patientClear.Text = "Clear";
-            this.button_patientClear.UseVisualStyleBackColor = true;
-            this.button_patientClear.Click += new System.EventHandler(this.button_patientClear_Click);
+            this.button_patientSearch.Location = new System.Drawing.Point(937, 498);
+            this.button_patientSearch.Name = "button_patientSearch";
+            this.button_patientSearch.Size = new System.Drawing.Size(105, 45);
+            this.button_patientSearch.TabIndex = 12;
+            this.button_patientSearch.Text = "Search";
+            this.button_patientSearch.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker_DOB
             // 
@@ -236,7 +211,7 @@
             // label_ID
             // 
             this.label_ID.AutoSize = true;
-            this.label_ID.Location = new System.Drawing.Point(128, 489);
+            this.label_ID.Location = new System.Drawing.Point(118, 489);
             this.label_ID.Name = "label_ID";
             this.label_ID.Size = new System.Drawing.Size(37, 25);
             this.label_ID.TabIndex = 19;
@@ -253,13 +228,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1295, 579);
+            this.ClientSize = new System.Drawing.Size(1545, 631);
             this.Controls.Add(this.textBox_patientID);
             this.Controls.Add(this.label_ID);
             this.Controls.Add(this.dateTimePicker_DOB);
-            this.Controls.Add(this.button_patientClear);
-            this.Controls.Add(this.button_patientDelete);
-            this.Controls.Add(this.button_patientEdit);
+            this.Controls.Add(this.button_patientSearch);
             this.Controls.Add(this.button_patientAdd);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox_medicalHistory);
@@ -304,9 +277,7 @@
         private System.Windows.Forms.TextBox textBox_medicalHistory;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button_patientAdd;
-        private System.Windows.Forms.Button button_patientEdit;
-        private System.Windows.Forms.Button button_patientDelete;
-        private System.Windows.Forms.Button button_patientClear;
+        private System.Windows.Forms.Button button_patientSearch;
         private System.Windows.Forms.DateTimePicker dateTimePicker_DOB;
         private System.Windows.Forms.Label label_ID;
         private System.Windows.Forms.TextBox textBox_patientID;

@@ -18,59 +18,58 @@ namespace Hospital_Management
             InitializeComponent();
         }
 
-        private void button_login_Click(object sender, EventArgs e)
+        private void button_Users_Click(object sender, EventArgs e)
         {
-           Login loginForm = new Login();
-            loginForm.ShowDialog();
-
-
+            User user = new User();
+            user.ShowDialog();
         }
 
-        private void button_register_Click(object sender, EventArgs e)
+        private void button_patients_Click(object sender, EventArgs e)
         {
-            Register registerForm = new Register();
-            registerForm.ShowDialog();
-        }
-
-        private void button_patientManagement_Click(object sender, EventArgs e)
-        {
-            Patient patientForm = new Patient();
-            patientForm.ShowDialog();
+            Patient patient = new Patient();
+            patient.ShowDialog();
         }
 
         private void button_appointmentScheduling_Click(object sender, EventArgs e)
         {
-         
-        }
-
-        private void button_Inventory_Click(object sender, EventArgs e)
-        {
-
+            Appoinment appointment = new Appoinment();
+            appointment.ShowDialog();
         }
 
         private void button_DataAnalytics_Click(object sender, EventArgs e)
         {
+            DataAnalytics dataAnalytics = new DataAnalytics();
+            dataAnalytics.ShowDialog();
+        }
 
+        private void button_Inventory_Click(object sender, EventArgs e)
+        {
+            Inventory inventory = new Inventory();
+            inventory.ShowDialog();
+        }
+
+        private void buttonInventoryLogs_Click(object sender, EventArgs e)
+        {
+            Inventory InventoryLog = new Inventory();
+            InventoryLog.ShowDialog();
         }
 
         private void button_Notifications_Click(object sender, EventArgs e)
         {
-
+            Notification notification = new Notification();
+            notification.ShowDialog();
         }
 
         private void button_ChatSystem_Click(object sender, EventArgs e)
         {
-
+            Chat chat = new Chat();
+            chat.ShowDialog();
         }
 
-        private void button_PatientMonitoring_Click(object sender, EventArgs e)
+        private void button_Vital_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button_Dashboard_Click(object sender, EventArgs e)
-        {
-
+            Vital vital = new Vital();
+            vital.ShowDialog();
         }
     }
 }
