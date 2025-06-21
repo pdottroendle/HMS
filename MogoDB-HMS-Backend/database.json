@@ -1,0 +1,162 @@
+{
+    "User": [
+        {
+            "UserID": "001",
+            "Username": "Alice",
+            "PasswordHash": "12345",
+            "Role": "Nurse",
+            "Email": "alice@example.com",
+            "Phone": "123.000.0000"
+        },
+        {
+            "UserID": "002",
+            "Username": "Bob",
+            "PasswordHash": "67890",
+            "Role": "Doctor",
+            "Email": "bob@example.com",
+            "Phone": "456.000.0000"
+        }
+    ],
+    "Appointment": [
+        {
+            "AppointmentID": "A001",
+            "PatientID": "P001",
+            "DoctorID": "002",
+            "DateTime": "2023-08-01T10:00:00Z",
+            "Status": "Scheduled",
+            "Notes": "Routine check-up"
+        },
+        {
+            "AppointmentID": "A002",
+            "PatientID": "P002",
+            "DoctorID": "002",
+            "DateTime": "2023-08-02T11:00:00Z",
+            "Status": "Scheduled",
+            "Notes": "Follow-up"
+        }
+    ],
+    "Vital": [
+        {
+            "VitalID": "V001",
+            "PatientID": "P001",
+            "Timestamp": "2023-08-01T10:00:00Z",
+            "HeartRate": 72,
+            "BloodPressure": "120/80",
+            "Temperature": 98.6,
+            "OxygenLevel": 98
+        },
+        {
+            "VitalID": "V002",
+            "PatientID": "P002",
+            "Timestamp": "2023-08-02T11:00:00Z",
+            "HeartRate": 75,
+            "BloodPressure": "122/82",
+            "Temperature": 98.7,
+            "OxygenLevel": 97
+        }
+    ],
+    "Report": [
+        {
+            "ReportID": "R001",
+            "Type": "Visits",
+            "GeneratedBy": "002",
+            "Timestamp": "2023-08-01T12:00:00Z",
+            "FilePath": "/reports/visits_R001.pdf"
+        },
+        {
+            "ReportID": "R002",
+            "Type": "Medications",
+            "GeneratedBy": "002",
+            "Timestamp": "2023-08-02T13:00:00Z",
+            "FilePath": "/reports/medications_R002.pdf"
+        }
+    ],
+    "Patient": [
+        {
+            "PatientID": "P001",
+            "UserID": "001",
+            "Name": "John Doe",
+            "DOB": "1980-01-01",
+            "Gender": "Male",
+            "Address": "123 Main St",
+            "ContactInfo": "john.doe@example.com",
+            "MedicalHistory": "No known allergies"
+        },
+        {
+            "PatientID": "P002",
+            "UserID": "002",
+            "Name": "Jane Smith",
+            "DOB": "1990-02-02",
+            "Gender": "Female",
+            "Address": "456 Elm St",
+            "ContactInfo": "jane.smith@example.com",
+            "MedicalHistory": "Asthma"
+        }
+    ],
+    "Notification": [
+        {
+            "NotificationID": "N001",
+            "UserID": "001",
+            "Message": "Appointment reminder",
+            "Timestamp": "2023-08-01T09:00:00Z",
+            "IsRead": false
+        },
+        {
+            "NotificationID": "N002",
+            "UserID": "002",
+            "Message": "New message from patient",
+            "Timestamp": "2023-08-02T10:00:00Z",
+            "IsRead": true
+        }
+    ],
+    "Message": [
+        {
+            "MessageID": "M001",
+            "SenderID": "001",
+            "ReceiverID": "002",
+            "Timestamp": "2023-08-01T09:30:00Z",
+            "Content": "Hello, I need to reschedule my appointment."
+        },
+        {
+            "MessageID": "M002",
+            "SenderID": "002",
+            "ReceiverID": "001",
+            "Timestamp": "2023-08-01T09:45:00Z",
+            "Content": "Sure, let's find a new time."
+        }
+    ],
+    "InventoryLog": [
+        {
+            "LogID": "L001",
+            "ItemID": "I001",
+            "ChangeAmount": -10,
+            "Timestamp": "2023-08-01T08:00:00Z",
+            "UserID": "002",
+            "Reason": "Used in surgery"
+        },
+        {
+            "LogID": "L002",
+            "ItemID": "I002",
+            "ChangeAmount": 20,
+            "Timestamp": "2023-08-02T08:30:00Z",
+            "UserID": "001",
+            "Reason": "Restocked"
+        }
+    ],
+    "Inventory": [
+        {
+            "ItemID": "I001",
+            "Name": "Bandages",
+            "Quantity": 100,
+            "Threshold": 20,
+            "LastUpdated": "2023-08-01T07:00:00Z"
+        },
+        {
+            "ItemID": "I002",
+            "Name": "Syringes",
+            "Quantity": 200,
+            "Threshold": 50,
+            "LastUpdated": "2023-08-02T07:30:00Z"
+        }
+    ]
+}
