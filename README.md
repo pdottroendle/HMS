@@ -5,7 +5,7 @@ check in the MogoDB directory for the models and the CURL Endpoint commands (REA
 
 
 # MongoDB ERD Core Entities and Relationships
-
+Use MOngoDB for USERs
 ## 1. Users
 Attributes: 
 - **UserID** (PK)
@@ -20,7 +20,7 @@ Relationships:
 - One-to-many with Messages (for chat)
 - One-to-many with Notifications
 
-use SSMS database
+use SSMS database for Patients
 ## 2. Patients
 Attributes: 
 - **PatientID** (PK)
@@ -37,7 +37,7 @@ Relationships:
 - One-to-many with Vitals
 - One-to-many with Prescriptions
 
-SSMS database
+SSMS database for appoinments
 ## 3. Appointments
 Attributes: 
 - **AppointmentID** (PK)
@@ -51,7 +51,7 @@ Relationships:
 - Many-to-one with Patients
 - Many-to-one with Users (Doctors)
 
-SSMS database
+SSMS database for Inventory
 ## 4. Inventory
 Attributes: 
 - **ItemID** (PK)
@@ -63,7 +63,7 @@ Attributes:
 Relationships:
 - One-to-many with InventoryLogs
 
-SSMS database
+SSMS database for Inventory Logs
 ## 5. InventoryLogs
 Attributes: 
 - **LogID** (PK)
@@ -73,7 +73,7 @@ Attributes:
 - UserID (FK)
 - Reason
 
-MongoDB
+MongoDB for Vitals
 ## 6. Vitals
 Attributes: 
 - **VitalID** (PK)
@@ -83,7 +83,8 @@ Attributes:
 - BloodPressure
 - Temperature
 - OxygenLevel
-MongoDB
+
+MongoDB for chats
 ## 7. Messages (Chat)
 Attributes: 
 - **MessageID** (PK)
@@ -91,7 +92,8 @@ Attributes:
 - ReceiverID (FK)
 - Timestamp
 - Content
-MongoDB
+
+MongoDB for Notification
 ## 8. Notifications
 Attributes: 
 - **NotificationID** (PK)
@@ -100,6 +102,7 @@ Attributes:
 - Timestamp
 - IsRead
 
+Use SSMS for Reports
 ## 9. Reports
 Attributes: 
 - **ReportID** (PK)
