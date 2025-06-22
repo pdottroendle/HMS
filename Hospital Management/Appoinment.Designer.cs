@@ -34,13 +34,16 @@
             this.label_AppDateTime = new System.Windows.Forms.Label();
             this.label_AppStatus = new System.Windows.Forms.Label();
             this.label_AppNotes = new System.Windows.Forms.Label();
-            this.comboBox_AppPatient = new System.Windows.Forms.ComboBox();
-            this.comboBox_AppDoctor = new System.Windows.Forms.ComboBox();
             this.comboBox_AppStatus = new System.Windows.Forms.ComboBox();
             this.dateTimePicker_AppTime = new System.Windows.Forms.DateTimePicker();
             this.textBox_AppNotes = new System.Windows.Forms.TextBox();
             this.button_AppAdd = new System.Windows.Forms.Button();
             this.button_AppSearch = new System.Windows.Forms.Button();
+            this.textBoxPatientID = new System.Windows.Forms.TextBox();
+            this.textBoxDoctorID = new System.Windows.Forms.TextBox();
+            this.sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
+            this.label_AppoinmentID = new System.Windows.Forms.Label();
+            this.textBox_AppoinmentID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Appointment)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +60,7 @@
             // label_AppPatient
             // 
             this.label_AppPatient.AutoSize = true;
-            this.label_AppPatient.Location = new System.Drawing.Point(12, 86);
+            this.label_AppPatient.Location = new System.Drawing.Point(12, 44);
             this.label_AppPatient.Name = "label_AppPatient";
             this.label_AppPatient.Size = new System.Drawing.Size(78, 25);
             this.label_AppPatient.TabIndex = 1;
@@ -99,22 +102,6 @@
             this.label_AppNotes.TabIndex = 1;
             this.label_AppNotes.Text = "Notes:";
             // 
-            // comboBox_AppPatient
-            // 
-            this.comboBox_AppPatient.FormattingEnabled = true;
-            this.comboBox_AppPatient.Location = new System.Drawing.Point(211, 86);
-            this.comboBox_AppPatient.Name = "comboBox_AppPatient";
-            this.comboBox_AppPatient.Size = new System.Drawing.Size(162, 32);
-            this.comboBox_AppPatient.TabIndex = 2;
-            // 
-            // comboBox_AppDoctor
-            // 
-            this.comboBox_AppDoctor.FormattingEnabled = true;
-            this.comboBox_AppDoctor.Location = new System.Drawing.Point(211, 174);
-            this.comboBox_AppDoctor.Name = "comboBox_AppDoctor";
-            this.comboBox_AppDoctor.Size = new System.Drawing.Size(162, 32);
-            this.comboBox_AppDoctor.TabIndex = 2;
-            // 
             // comboBox_AppStatus
             // 
             this.comboBox_AppStatus.FormattingEnabled = true;
@@ -145,6 +132,7 @@
             this.button_AppAdd.TabIndex = 5;
             this.button_AppAdd.Text = "Add";
             this.button_AppAdd.UseVisualStyleBackColor = true;
+            this.button_AppAdd.Click += new System.EventHandler(this.button_AppAdd_Click);
             // 
             // button_AppSearch
             // 
@@ -154,22 +142,60 @@
             this.button_AppSearch.TabIndex = 5;
             this.button_AppSearch.Text = "Search";
             this.button_AppSearch.UseVisualStyleBackColor = true;
+            this.button_AppSearch.Click += new System.EventHandler(this.button_AppSearch_Click);
+            // 
+            // textBoxPatientID
+            // 
+            this.textBoxPatientID.Location = new System.Drawing.Point(211, 44);
+            this.textBoxPatientID.Name = "textBoxPatientID";
+            this.textBoxPatientID.Size = new System.Drawing.Size(167, 29);
+            this.textBoxPatientID.TabIndex = 6;
+            // 
+            // textBoxDoctorID
+            // 
+            this.textBoxDoctorID.Location = new System.Drawing.Point(211, 177);
+            this.textBoxDoctorID.Name = "textBoxDoctorID";
+            this.textBoxDoctorID.Size = new System.Drawing.Size(167, 29);
+            this.textBoxDoctorID.TabIndex = 6;
+            // 
+            // sqlCommand1
+            // 
+            this.sqlCommand1.CommandTimeout = 30;
+            this.sqlCommand1.EnableOptimizedParameterBinding = false;
+            // 
+            // label_AppoinmentID
+            // 
+            this.label_AppoinmentID.AutoSize = true;
+            this.label_AppoinmentID.Location = new System.Drawing.Point(12, 105);
+            this.label_AppoinmentID.Name = "label_AppoinmentID";
+            this.label_AppoinmentID.Size = new System.Drawing.Size(117, 25);
+            this.label_AppoinmentID.TabIndex = 1;
+            this.label_AppoinmentID.Text = "Appoinment";
+            // 
+            // textBox_AppoinmentID
+            // 
+            this.textBox_AppoinmentID.Location = new System.Drawing.Point(211, 105);
+            this.textBox_AppoinmentID.Name = "textBox_AppoinmentID";
+            this.textBox_AppoinmentID.Size = new System.Drawing.Size(167, 29);
+            this.textBox_AppoinmentID.TabIndex = 6;
             // 
             // Appoinment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1639, 615);
+            this.Controls.Add(this.textBoxDoctorID);
+            this.Controls.Add(this.textBox_AppoinmentID);
+            this.Controls.Add(this.textBoxPatientID);
             this.Controls.Add(this.button_AppSearch);
             this.Controls.Add(this.button_AppAdd);
             this.Controls.Add(this.textBox_AppNotes);
             this.Controls.Add(this.dateTimePicker_AppTime);
             this.Controls.Add(this.comboBox_AppStatus);
-            this.Controls.Add(this.comboBox_AppDoctor);
-            this.Controls.Add(this.comboBox_AppPatient);
             this.Controls.Add(this.label_AppNotes);
             this.Controls.Add(this.label_AppStatus);
             this.Controls.Add(this.label_AppDateTime);
+            this.Controls.Add(this.label_AppoinmentID);
             this.Controls.Add(this.label_AppDoctor);
             this.Controls.Add(this.label_AppPatient);
             this.Controls.Add(this.dataGridView_Appointment);
@@ -189,12 +215,15 @@
         private System.Windows.Forms.Label label_AppDateTime;
         private System.Windows.Forms.Label label_AppStatus;
         private System.Windows.Forms.Label label_AppNotes;
-        private System.Windows.Forms.ComboBox comboBox_AppPatient;
-        private System.Windows.Forms.ComboBox comboBox_AppDoctor;
         private System.Windows.Forms.ComboBox comboBox_AppStatus;
         private System.Windows.Forms.DateTimePicker dateTimePicker_AppTime;
         private System.Windows.Forms.TextBox textBox_AppNotes;
         private System.Windows.Forms.Button button_AppAdd;
         private System.Windows.Forms.Button button_AppSearch;
+        private System.Windows.Forms.TextBox textBoxPatientID;
+        private System.Windows.Forms.TextBox textBoxDoctorID;
+        private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
+        private System.Windows.Forms.Label label_AppoinmentID;
+        private System.Windows.Forms.TextBox textBox_AppoinmentID;
     }
 }

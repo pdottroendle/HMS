@@ -1,26 +1,24 @@
 ﻿using Hospital_Management;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 public class AppointmentData
 {
-   
-        [Key]
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string AppointmentID { get; set; }
 
-    [Required]
-    public int AppointmentID { get; set; } // Primary Key
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string PatientID { get; set; }
 
-    public int PatientID { get; set; }  // Foreign Key to Patient
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string DoctorID { get; set; }
 
-    public int DoctorID { get; set; }      // Foreign Key to User (Doctor)
-
-    public DateTime DateTime { get; set; } // Scheduled Date and Time
-
-    public string Status { get; set; }     // Scheduled, Cancelled, Completed
-
-    public string Notes { get; set; }      // Additional Information
-
-    public virtual PatientData Patient { get; set; }
+    public DateTime DateTime { get; set; }
+    public string Status { get; set; } // Scheduled, Cancelled, Completed
+    public string Notes { get; set; }
 }
 

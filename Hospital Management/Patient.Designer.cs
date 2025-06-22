@@ -32,7 +32,7 @@
             this.label_LastName = new System.Windows.Forms.Label();
             this.label_dob = new System.Windows.Forms.Label();
             this.label_Gender = new System.Windows.Forms.Label();
-            this.label_Phone = new System.Windows.Forms.Label();
+            this.label_ContactInfo = new System.Windows.Forms.Label();
             this.label_Email = new System.Windows.Forms.Label();
             this.label_Address = new System.Windows.Forms.Label();
             this.label_medical = new System.Windows.Forms.Label();
@@ -47,8 +47,12 @@
             this.button_patientAdd = new System.Windows.Forms.Button();
             this.button_patientSearch = new System.Windows.Forms.Button();
             this.dateTimePicker_DOB = new System.Windows.Forms.DateTimePicker();
-            this.label_ID = new System.Windows.Forms.Label();
-            this.textBox_patientID = new System.Windows.Forms.TextBox();
+            this.label_PatientUser = new System.Windows.Forms.Label();
+            this.textBox_patientUserID = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label_PatientID = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_PatientPatientID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,14 +92,14 @@
             this.label_Gender.TabIndex = 3;
             this.label_Gender.Text = "Gender:";
             // 
-            // label_Phone
+            // label_ContactInfo
             // 
-            this.label_Phone.AutoSize = true;
-            this.label_Phone.Location = new System.Drawing.Point(86, 236);
-            this.label_Phone.Name = "label_Phone";
-            this.label_Phone.Size = new System.Drawing.Size(75, 25);
-            this.label_Phone.TabIndex = 4;
-            this.label_Phone.Text = "Phone:";
+            this.label_ContactInfo.AutoSize = true;
+            this.label_ContactInfo.Location = new System.Drawing.Point(42, 236);
+            this.label_ContactInfo.Name = "label_ContactInfo";
+            this.label_ContactInfo.Size = new System.Drawing.Size(123, 25);
+            this.label_ContactInfo.TabIndex = 4;
+            this.label_ContactInfo.Text = "Contact Info:";
             // 
             // label_Email
             // 
@@ -185,12 +189,13 @@
             // 
             // button_patientAdd
             // 
-            this.button_patientAdd.Location = new System.Drawing.Point(610, 498);
+            this.button_patientAdd.Location = new System.Drawing.Point(668, 498);
             this.button_patientAdd.Name = "button_patientAdd";
             this.button_patientAdd.Size = new System.Drawing.Size(104, 45);
             this.button_patientAdd.TabIndex = 11;
             this.button_patientAdd.Text = "Add";
             this.button_patientAdd.UseVisualStyleBackColor = true;
+            this.button_patientAdd.Click += new System.EventHandler(this.button_patientAdd_Click);
             // 
             // button_patientSearch
             // 
@@ -200,6 +205,7 @@
             this.button_patientSearch.TabIndex = 12;
             this.button_patientSearch.Text = "Search";
             this.button_patientSearch.UseVisualStyleBackColor = true;
+            this.button_patientSearch.Click += new System.EventHandler(this.button_patientSearch_Click);
             // 
             // dateTimePicker_DOB
             // 
@@ -208,29 +214,65 @@
             this.dateTimePicker_DOB.Size = new System.Drawing.Size(319, 29);
             this.dateTimePicker_DOB.TabIndex = 18;
             // 
-            // label_ID
+            // label_PatientUser
             // 
-            this.label_ID.AutoSize = true;
-            this.label_ID.Location = new System.Drawing.Point(118, 489);
-            this.label_ID.Name = "label_ID";
-            this.label_ID.Size = new System.Drawing.Size(37, 25);
-            this.label_ID.TabIndex = 19;
-            this.label_ID.Text = "ID:";
+            this.label_PatientUser.AutoSize = true;
+            this.label_PatientUser.Location = new System.Drawing.Point(70, 489);
+            this.label_PatientUser.Name = "label_PatientUser";
+            this.label_PatientUser.Size = new System.Drawing.Size(59, 25);
+            this.label_PatientUser.TabIndex = 19;
+            this.label_PatientUser.Text = "User:";
             // 
-            // textBox_patientID
+            // textBox_patientUserID
             // 
-            this.textBox_patientID.Location = new System.Drawing.Point(209, 489);
-            this.textBox_patientID.Name = "textBox_patientID";
-            this.textBox_patientID.Size = new System.Drawing.Size(100, 29);
-            this.textBox_patientID.TabIndex = 20;
+            this.textBox_patientUserID.Location = new System.Drawing.Point(209, 489);
+            this.textBox_patientUserID.Name = "textBox_patientUserID";
+            this.textBox_patientUserID.Size = new System.Drawing.Size(100, 29);
+            this.textBox_patientUserID.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(70, 538);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 25);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "User:";
+            // 
+            // label_PatientID
+            // 
+            this.label_PatientID.AutoSize = true;
+            this.label_PatientID.Location = new System.Drawing.Point(70, 538);
+            this.label_PatientID.Name = "label_PatientID";
+            this.label_PatientID.Size = new System.Drawing.Size(78, 25);
+            this.label_PatientID.TabIndex = 19;
+            this.label_PatientID.Text = "Patient:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(209, 489);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 29);
+            this.textBox1.TabIndex = 20;
+            // 
+            // textBox_PatientPatientID
+            // 
+            this.textBox_PatientPatientID.Location = new System.Drawing.Point(209, 538);
+            this.textBox_PatientPatientID.Name = "textBox_PatientPatientID";
+            this.textBox_PatientPatientID.Size = new System.Drawing.Size(100, 29);
+            this.textBox_PatientPatientID.TabIndex = 20;
             // 
             // Patient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1545, 631);
-            this.Controls.Add(this.textBox_patientID);
-            this.Controls.Add(this.label_ID);
+            this.Controls.Add(this.textBox_PatientPatientID);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_patientUserID);
+            this.Controls.Add(this.label_PatientID);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_PatientUser);
             this.Controls.Add(this.dateTimePicker_DOB);
             this.Controls.Add(this.button_patientSearch);
             this.Controls.Add(this.button_patientAdd);
@@ -245,7 +287,7 @@
             this.Controls.Add(this.label_medical);
             this.Controls.Add(this.label_Address);
             this.Controls.Add(this.label_Email);
-            this.Controls.Add(this.label_Phone);
+            this.Controls.Add(this.label_ContactInfo);
             this.Controls.Add(this.label_Gender);
             this.Controls.Add(this.label_dob);
             this.Controls.Add(this.label_LastName);
@@ -264,7 +306,7 @@
         private System.Windows.Forms.Label label_LastName;
         private System.Windows.Forms.Label label_dob;
         private System.Windows.Forms.Label label_Gender;
-        private System.Windows.Forms.Label label_Phone;
+        private System.Windows.Forms.Label label_ContactInfo;
         private System.Windows.Forms.Label label_Email;
         private System.Windows.Forms.Label label_Address;
         private System.Windows.Forms.Label label_medical;
@@ -279,7 +321,11 @@
         private System.Windows.Forms.Button button_patientAdd;
         private System.Windows.Forms.Button button_patientSearch;
         private System.Windows.Forms.DateTimePicker dateTimePicker_DOB;
-        private System.Windows.Forms.Label label_ID;
-        private System.Windows.Forms.TextBox textBox_patientID;
+        private System.Windows.Forms.Label label_PatientUser;
+        private System.Windows.Forms.TextBox textBox_patientUserID;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_PatientID;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_PatientPatientID;
     }
 }

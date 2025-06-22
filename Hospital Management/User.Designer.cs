@@ -82,6 +82,7 @@
             this.buttonUserAdd.TabIndex = 2;
             this.buttonUserAdd.Text = "Add";
             this.buttonUserAdd.UseVisualStyleBackColor = true;
+            this.buttonUserAdd.Click += new System.EventHandler(this.buttonUserAdd_Click);
             // 
             // buttonUserSearch
             // 
@@ -91,6 +92,7 @@
             this.buttonUserSearch.TabIndex = 2;
             this.buttonUserSearch.Text = "Search";
             this.buttonUserSearch.UseVisualStyleBackColor = true;
+            this.buttonUserSearch.Click += new System.EventHandler(this.buttonUserSearch_Click);
             // 
             // User
             // 

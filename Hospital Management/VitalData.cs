@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +10,17 @@ namespace Hospital_Management
 {
     public class VitalData
     {
-        public int VitalID { get; set; }
-        public int PatientID { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string VitalID { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string PatientID { get; set; }
+
         public DateTime Timestamp { get; set; }
-        public int HeartRate { get; set; }
+        public double HeartRate { get; set; }
         public string BloodPressure { get; set; }
-        public float Temperature { get; set; }
-        public int OxygenLevel { get; set; }
+        public double Temperature { get; set; }
+        public double OxygenLevel { get; set; }
     }
 }

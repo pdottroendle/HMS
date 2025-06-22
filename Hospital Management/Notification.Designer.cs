@@ -31,21 +31,24 @@
             this.dataGridView_Notification = new System.Windows.Forms.DataGridView();
             this.button_NotificationAdd = new System.Windows.Forms.Button();
             this.button_NotificationSearch = new System.Windows.Forms.Button();
-            this.label_Status = new System.Windows.Forms.Label();
+            this.label_IsRead = new System.Windows.Forms.Label();
             this.statusStrip_Message = new System.Windows.Forms.StatusStrip();
-            this.label_NotifyUser = new System.Windows.Forms.Label();
+            this.label_NotificationUser = new System.Windows.Forms.Label();
             this.label_NotifyMessage = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox_NotifyUser = new System.Windows.Forms.ComboBox();
-            this.comboBox_NotifyMessage = new System.Windows.Forms.ComboBox();
+            this.label_Notification = new System.Windows.Forms.Label();
+            this.checkBox_IsRead = new System.Windows.Forms.CheckBox();
+            this.textBox_NotificationID = new System.Windows.Forms.TextBox();
+            this.textBox_NotificationUserID = new System.Windows.Forms.TextBox();
+            this.textBox_NotificationMessageID = new System.Windows.Forms.TextBox();
+            this.label_NotificationTime = new System.Windows.Forms.Label();
+            this.textBox_NotificationTime = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Notification)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView_Notification
             // 
             this.dataGridView_Notification.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Notification.Location = new System.Drawing.Point(438, 55);
+            this.dataGridView_Notification.Location = new System.Drawing.Point(442, 27);
             this.dataGridView_Notification.Name = "dataGridView_Notification";
             this.dataGridView_Notification.RowHeadersWidth = 72;
             this.dataGridView_Notification.RowTemplate.Height = 31;
@@ -54,30 +57,32 @@
             // 
             // button_NotificationAdd
             // 
-            this.button_NotificationAdd.Location = new System.Drawing.Point(604, 492);
+            this.button_NotificationAdd.Location = new System.Drawing.Point(713, 486);
             this.button_NotificationAdd.Name = "button_NotificationAdd";
             this.button_NotificationAdd.Size = new System.Drawing.Size(156, 35);
             this.button_NotificationAdd.TabIndex = 1;
             this.button_NotificationAdd.Text = "Add";
             this.button_NotificationAdd.UseVisualStyleBackColor = true;
+            this.button_NotificationAdd.Click += new System.EventHandler(this.button_NotificationAdd_Click);
             // 
             // button_NotificationSearch
             // 
-            this.button_NotificationSearch.Location = new System.Drawing.Point(903, 492);
+            this.button_NotificationSearch.Location = new System.Drawing.Point(996, 486);
             this.button_NotificationSearch.Name = "button_NotificationSearch";
             this.button_NotificationSearch.Size = new System.Drawing.Size(156, 35);
             this.button_NotificationSearch.TabIndex = 1;
             this.button_NotificationSearch.Text = "Search";
             this.button_NotificationSearch.UseVisualStyleBackColor = true;
+            this.button_NotificationSearch.Click += new System.EventHandler(this.button_NotificationSearch_Click);
             // 
-            // label_Status
+            // label_IsRead
             // 
-            this.label_Status.AutoSize = true;
-            this.label_Status.Location = new System.Drawing.Point(37, 259);
-            this.label_Status.Name = "label_Status";
-            this.label_Status.Size = new System.Drawing.Size(68, 25);
-            this.label_Status.TabIndex = 2;
-            this.label_Status.Text = "Status";
+            this.label_IsRead.AutoSize = true;
+            this.label_IsRead.Location = new System.Drawing.Point(37, 259);
+            this.label_IsRead.Name = "label_IsRead";
+            this.label_IsRead.Size = new System.Drawing.Size(79, 25);
+            this.label_IsRead.TabIndex = 2;
+            this.label_IsRead.Text = "IsRead:";
             // 
             // statusStrip_Message
             // 
@@ -88,14 +93,14 @@
             this.statusStrip_Message.TabIndex = 3;
             this.statusStrip_Message.Text = "statusStrip1";
             // 
-            // label_NotifyUser
+            // label_NotificationUser
             // 
-            this.label_NotifyUser.AutoSize = true;
-            this.label_NotifyUser.Location = new System.Drawing.Point(42, 99);
-            this.label_NotifyUser.Name = "label_NotifyUser";
-            this.label_NotifyUser.Size = new System.Drawing.Size(59, 25);
-            this.label_NotifyUser.TabIndex = 4;
-            this.label_NotifyUser.Text = "User:";
+            this.label_NotificationUser.AutoSize = true;
+            this.label_NotificationUser.Location = new System.Drawing.Point(46, 103);
+            this.label_NotificationUser.Name = "label_NotificationUser";
+            this.label_NotificationUser.Size = new System.Drawing.Size(59, 25);
+            this.label_NotificationUser.TabIndex = 4;
+            this.label_NotificationUser.Text = "User:";
             // 
             // label_NotifyMessage
             // 
@@ -106,53 +111,78 @@
             this.label_NotifyMessage.TabIndex = 4;
             this.label_NotifyMessage.Text = "Message:";
             // 
-            // comboBox1
+            // label_Notification
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(178, 99);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 32);
-            this.comboBox1.TabIndex = 5;
+            this.label_Notification.AutoSize = true;
+            this.label_Notification.Location = new System.Drawing.Point(37, 44);
+            this.label_Notification.Name = "label_Notification";
+            this.label_Notification.Size = new System.Drawing.Size(113, 25);
+            this.label_Notification.TabIndex = 4;
+            this.label_Notification.Text = "Notification:";
             // 
-            // button1
+            // checkBox_IsRead
             // 
-            this.button1.Location = new System.Drawing.Point(604, 492);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(156, 35);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.checkBox_IsRead.AutoSize = true;
+            this.checkBox_IsRead.Location = new System.Drawing.Point(215, 263);
+            this.checkBox_IsRead.Name = "checkBox_IsRead";
+            this.checkBox_IsRead.Size = new System.Drawing.Size(22, 21);
+            this.checkBox_IsRead.TabIndex = 5;
+            this.checkBox_IsRead.UseVisualStyleBackColor = true;
             // 
-            // comboBox_NotifyUser
+            // textBox_NotificationID
             // 
-            this.comboBox_NotifyUser.FormattingEnabled = true;
-            this.comboBox_NotifyUser.Location = new System.Drawing.Point(178, 99);
-            this.comboBox_NotifyUser.Name = "comboBox_NotifyUser";
-            this.comboBox_NotifyUser.Size = new System.Drawing.Size(121, 32);
-            this.comboBox_NotifyUser.TabIndex = 5;
+            this.textBox_NotificationID.Location = new System.Drawing.Point(182, 44);
+            this.textBox_NotificationID.Name = "textBox_NotificationID";
+            this.textBox_NotificationID.Size = new System.Drawing.Size(153, 29);
+            this.textBox_NotificationID.TabIndex = 6;
             // 
-            // comboBox_NotifyMessage
+            // textBox_NotificationUserID
             // 
-            this.comboBox_NotifyMessage.FormattingEnabled = true;
-            this.comboBox_NotifyMessage.Location = new System.Drawing.Point(178, 176);
-            this.comboBox_NotifyMessage.Name = "comboBox_NotifyMessage";
-            this.comboBox_NotifyMessage.Size = new System.Drawing.Size(121, 32);
-            this.comboBox_NotifyMessage.TabIndex = 5;
+            this.textBox_NotificationUserID.Location = new System.Drawing.Point(182, 99);
+            this.textBox_NotificationUserID.Name = "textBox_NotificationUserID";
+            this.textBox_NotificationUserID.Size = new System.Drawing.Size(153, 29);
+            this.textBox_NotificationUserID.TabIndex = 6;
+            // 
+            // textBox_NotificationMessageID
+            // 
+            this.textBox_NotificationMessageID.Location = new System.Drawing.Point(182, 176);
+            this.textBox_NotificationMessageID.Name = "textBox_NotificationMessageID";
+            this.textBox_NotificationMessageID.Size = new System.Drawing.Size(153, 29);
+            this.textBox_NotificationMessageID.TabIndex = 6;
+            // 
+            // label_NotificationTime
+            // 
+            this.label_NotificationTime.AutoSize = true;
+            this.label_NotificationTime.Location = new System.Drawing.Point(17, 496);
+            this.label_NotificationTime.Name = "label_NotificationTime";
+            this.label_NotificationTime.Size = new System.Drawing.Size(119, 25);
+            this.label_NotificationTime.TabIndex = 7;
+            this.label_NotificationTime.Text = "TimeStamp:";
+            // 
+            // textBox_NotificationTime
+            // 
+            this.textBox_NotificationTime.Location = new System.Drawing.Point(182, 496);
+            this.textBox_NotificationTime.Name = "textBox_NotificationTime";
+            this.textBox_NotificationTime.Size = new System.Drawing.Size(162, 29);
+            this.textBox_NotificationTime.TabIndex = 8;
             // 
             // Notification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1346, 616);
-            this.Controls.Add(this.comboBox_NotifyMessage);
-            this.Controls.Add(this.comboBox_NotifyUser);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.textBox_NotificationTime);
+            this.Controls.Add(this.label_NotificationTime);
+            this.Controls.Add(this.textBox_NotificationMessageID);
+            this.Controls.Add(this.textBox_NotificationUserID);
+            this.Controls.Add(this.textBox_NotificationID);
+            this.Controls.Add(this.checkBox_IsRead);
             this.Controls.Add(this.label_NotifyMessage);
-            this.Controls.Add(this.label_NotifyUser);
+            this.Controls.Add(this.label_Notification);
+            this.Controls.Add(this.label_NotificationUser);
             this.Controls.Add(this.statusStrip_Message);
-            this.Controls.Add(this.label_Status);
+            this.Controls.Add(this.label_IsRead);
             this.Controls.Add(this.button_NotificationSearch);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.button_NotificationAdd);
             this.Controls.Add(this.dataGridView_Notification);
             this.Name = "Notification";
@@ -168,13 +198,16 @@
         private System.Windows.Forms.DataGridView dataGridView_Notification;
         private System.Windows.Forms.Button button_NotificationAdd;
         private System.Windows.Forms.Button button_NotificationSearch;
-        private System.Windows.Forms.Label label_Status;
+        private System.Windows.Forms.Label label_IsRead;
         private System.Windows.Forms.StatusStrip statusStrip_Message;
-        private System.Windows.Forms.Label label_NotifyUser;
+        private System.Windows.Forms.Label label_NotificationUser;
         private System.Windows.Forms.Label label_NotifyMessage;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox_NotifyUser;
-        private System.Windows.Forms.ComboBox comboBox_NotifyMessage;
+        private System.Windows.Forms.Label label_Notification;
+        private System.Windows.Forms.CheckBox checkBox_IsRead;
+        private System.Windows.Forms.TextBox textBox_NotificationID;
+        private System.Windows.Forms.TextBox textBox_NotificationUserID;
+        private System.Windows.Forms.TextBox textBox_NotificationMessageID;
+        private System.Windows.Forms.Label label_NotificationTime;
+        private System.Windows.Forms.TextBox textBox_NotificationTime;
     }
 }
