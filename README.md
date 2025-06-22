@@ -20,6 +20,7 @@ Relationships:
 - One-to-many with Messages (for chat)
 - One-to-many with Notifications
 
+use SSMS database
 ## 2. Patients
 Attributes: 
 - **PatientID** (PK)
@@ -36,6 +37,7 @@ Relationships:
 - One-to-many with Vitals
 - One-to-many with Prescriptions
 
+SSMS database
 ## 3. Appointments
 Attributes: 
 - **AppointmentID** (PK)
@@ -49,6 +51,7 @@ Relationships:
 - Many-to-one with Patients
 - Many-to-one with Users (Doctors)
 
+SSMS database
 ## 4. Inventory
 Attributes: 
 - **ItemID** (PK)
@@ -60,6 +63,7 @@ Attributes:
 Relationships:
 - One-to-many with InventoryLogs
 
+SSMS database
 ## 5. InventoryLogs
 Attributes: 
 - **LogID** (PK)
@@ -69,6 +73,7 @@ Attributes:
 - UserID (FK)
 - Reason
 
+MongoDB
 ## 6. Vitals
 Attributes: 
 - **VitalID** (PK)
@@ -78,7 +83,7 @@ Attributes:
 - BloodPressure
 - Temperature
 - OxygenLevel
-
+MongoDB
 ## 7. Messages (Chat)
 Attributes: 
 - **MessageID** (PK)
@@ -86,7 +91,7 @@ Attributes:
 - ReceiverID (FK)
 - Timestamp
 - Content
-
+MongoDB
 ## 8. Notifications
 Attributes: 
 - **NotificationID** (PK)
