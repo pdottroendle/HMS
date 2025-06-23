@@ -36,7 +36,7 @@ mongoose.connect('mongodb://localhost:27017/hospital_management', {
 });
 
 // Add User
-app.get('/add_Users', async (req, res) => {
+app.get('/add_User', async (req, res) => {
   const { UserID, Username, PasswordHash, Role, Email, Phone } = req.query;
 
   if (!UserID || !Username || !PasswordHash || !Role || !Email || !Phone) {
@@ -55,7 +55,7 @@ app.get('/add_Users', async (req, res) => {
   }
 });
 
-app.get('/Users', async (req, res) => {
+app.get('/User', async (req, res) => {
   const { UserID, Username, PasswordHash, Role, Email, Phone } = req.query;
   // Build the query object dynamically
   const query = {};
@@ -65,10 +65,10 @@ app.get('/Users', async (req, res) => {
   if (Email) query.Email =  Email;
   if (Phone) query.Phone = Phone;  
   try {
-    const results = await Users.find(query);
+    const results = await User.find(query);
     res.status(200).json(results);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch Users items', details: err.message });
+    res.status(500).json({ error: 'Failed to fetch User items', details: err.message });
   }
 });
 
