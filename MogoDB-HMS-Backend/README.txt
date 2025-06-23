@@ -2,12 +2,12 @@ examples search<br>
 http://xlynseyes.ddns.net:3001/Inventory?ItemID=I002<br>
 http://xlynseyes.ddns.net:3001/Inventory?Name=Bandages<br>
 http://xlynseyes.ddns.net:3001/Inventory?ItemID=I001&Name=Bandages<br>
-http://xlynseyes.ddns.net:3001/Users?UserID=002&Username=Bob&PasswordHash=67890&Role=Doctor&Email=bob@example.com&Phone=456.000.0000<br><br>
+http://xlynseyes.ddns.net:3001/User?UserID=002&Username=Bob&PasswordHash=67890&Role=Doctor&Email=bob@example.com&Phone=456.000.0000<br><br>
 # Add
-curl "http://xlynseyes.ddns.net:3001/export_db/add_Users?UserID=003&Username=Charlie&PasswordHash=abc123&Role=Admin&Email=charlie@example.com&Phone=789.000.0000"
+curl "http://xlynseyes.ddns.net:3001/export_db/add_User?UserID=003&Username=Charlie&PasswordHash=abc123&Role=Admin&Email=charlie@example.com&Phone=789.000.0000"
 
 # Search
-curl "http://xlynseyes.ddns.net:3001/Users?Role=Admin&Username="
+curl "http://xlynseyes.ddns.net:3001/User?Role=Admin&Username="
 
 # Add
 curl "http://xlynseyes.ddns.net:3001/add_Patients?PatientID=P003&UserID=003&Name=Chris&DOB=1985-05-05&Gender=Other&Address=789 Oak St&ContactInfo=chris@example.com&MedicalHistory=None"
