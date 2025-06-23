@@ -40,11 +40,11 @@
             this.labelVitalTimeStamp = new System.Windows.Forms.Label();
             this.button_VitalAdd = new System.Windows.Forms.Button();
             this.button_SearchVital = new System.Windows.Forms.Button();
-            this.textBox_VitalPatientID = new System.Windows.Forms.TextBox();
-            this.textBox_VitalHeartRate = new System.Windows.Forms.TextBox();
-            this.textBox_VitalBP = new System.Windows.Forms.TextBox();
-            this.textBox_VitalTemp = new System.Windows.Forms.TextBox();
-            this.textBox_VitalOxygen = new System.Windows.Forms.TextBox();
+            this.textBox_PatientID = new System.Windows.Forms.TextBox();
+            this.textBox_HeartRate = new System.Windows.Forms.TextBox();
+            this.textBox_BloodPressure = new System.Windows.Forms.TextBox();
+            this.textBox_Temperature = new System.Windows.Forms.TextBox();
+            this.textBox_OxygenLevel = new System.Windows.Forms.TextBox();
             this.label_Vital = new System.Windows.Forms.Label();
             this.textBox_VitalID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -53,97 +53,108 @@
             // label_SelectPatient
             // 
             this.label_SelectPatient.AutoSize = true;
-            this.label_SelectPatient.Location = new System.Drawing.Point(80, 88);
+            this.label_SelectPatient.Location = new System.Drawing.Point(44, 48);
+            this.label_SelectPatient.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_SelectPatient.Name = "label_SelectPatient";
-            this.label_SelectPatient.Size = new System.Drawing.Size(83, 25);
+            this.label_SelectPatient.Size = new System.Drawing.Size(46, 13);
             this.label_SelectPatient.TabIndex = 0;
             this.label_SelectPatient.Text = " Patient:";
             // 
             // label_HeartRate
             // 
             this.label_HeartRate.AutoSize = true;
-            this.label_HeartRate.Location = new System.Drawing.Point(62, 164);
+            this.label_HeartRate.Location = new System.Drawing.Point(34, 89);
+            this.label_HeartRate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_HeartRate.Name = "label_HeartRate";
-            this.label_HeartRate.Size = new System.Drawing.Size(110, 25);
+            this.label_HeartRate.Size = new System.Drawing.Size(62, 13);
             this.label_HeartRate.TabIndex = 2;
             this.label_HeartRate.Text = "Heart Rate:";
             // 
             // label_BP
             // 
             this.label_BP.AutoSize = true;
-            this.label_BP.Location = new System.Drawing.Point(87, 245);
+            this.label_BP.Location = new System.Drawing.Point(47, 133);
+            this.label_BP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_BP.Name = "label_BP";
-            this.label_BP.Size = new System.Drawing.Size(44, 25);
+            this.label_BP.Size = new System.Drawing.Size(24, 13);
             this.label_BP.TabIndex = 2;
             this.label_BP.Text = "BP:";
             // 
             // label_temp
             // 
             this.label_temp.AutoSize = true;
-            this.label_temp.Location = new System.Drawing.Point(80, 323);
+            this.label_temp.Location = new System.Drawing.Point(44, 175);
+            this.label_temp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_temp.Name = "label_temp";
-            this.label_temp.Size = new System.Drawing.Size(69, 25);
+            this.label_temp.Size = new System.Drawing.Size(37, 13);
             this.label_temp.TabIndex = 2;
             this.label_temp.Text = "Temp:";
             // 
             // label_Oxygen
             // 
             this.label_Oxygen.AutoSize = true;
-            this.label_Oxygen.Location = new System.Drawing.Point(62, 389);
+            this.label_Oxygen.Location = new System.Drawing.Point(34, 211);
+            this.label_Oxygen.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_Oxygen.Name = "label_Oxygen";
-            this.label_Oxygen.Size = new System.Drawing.Size(87, 25);
+            this.label_Oxygen.Size = new System.Drawing.Size(46, 13);
             this.label_Oxygen.TabIndex = 2;
             this.label_Oxygen.Text = "Oxygen:";
             // 
             // label_PatientStatus
             // 
             this.label_PatientStatus.AutoSize = true;
-            this.label_PatientStatus.Location = new System.Drawing.Point(623, 467);
+            this.label_PatientStatus.Location = new System.Drawing.Point(340, 253);
+            this.label_PatientStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_PatientStatus.Name = "label_PatientStatus";
-            this.label_PatientStatus.Size = new System.Drawing.Size(74, 25);
+            this.label_PatientStatus.Size = new System.Drawing.Size(40, 13);
             this.label_PatientStatus.TabIndex = 3;
             this.label_PatientStatus.Text = "Status:";
             // 
             // statusStrip_patientStatus
             // 
             this.statusStrip_patientStatus.ImageScalingSize = new System.Drawing.Size(28, 28);
-            this.statusStrip_patientStatus.Location = new System.Drawing.Point(0, 562);
+            this.statusStrip_patientStatus.Location = new System.Drawing.Point(0, 294);
             this.statusStrip_patientStatus.Name = "statusStrip_patientStatus";
-            this.statusStrip_patientStatus.Size = new System.Drawing.Size(1559, 22);
+            this.statusStrip_patientStatus.Padding = new System.Windows.Forms.Padding(1, 0, 8, 0);
+            this.statusStrip_patientStatus.Size = new System.Drawing.Size(850, 22);
             this.statusStrip_patientStatus.TabIndex = 4;
             this.statusStrip_patientStatus.Text = "statusStrip1";
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(605, 42);
+            this.dataGridView1.Location = new System.Drawing.Point(330, 23);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 72;
             this.dataGridView1.RowTemplate.Height = 31;
-            this.dataGridView1.Size = new System.Drawing.Size(801, 388);
+            this.dataGridView1.Size = new System.Drawing.Size(437, 210);
             this.dataGridView1.TabIndex = 5;
             // 
             // dateTimePickerVital
             // 
-            this.dateTimePickerVital.Location = new System.Drawing.Point(235, 470);
+            this.dateTimePickerVital.Location = new System.Drawing.Point(128, 255);
+            this.dateTimePickerVital.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dateTimePickerVital.Name = "dateTimePickerVital";
-            this.dateTimePickerVital.Size = new System.Drawing.Size(328, 29);
+            this.dateTimePickerVital.Size = new System.Drawing.Size(181, 20);
             this.dateTimePickerVital.TabIndex = 6;
             // 
             // labelVitalTimeStamp
             // 
             this.labelVitalTimeStamp.AutoSize = true;
-            this.labelVitalTimeStamp.Location = new System.Drawing.Point(48, 474);
+            this.labelVitalTimeStamp.Location = new System.Drawing.Point(26, 257);
+            this.labelVitalTimeStamp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelVitalTimeStamp.Name = "labelVitalTimeStamp";
-            this.labelVitalTimeStamp.Size = new System.Drawing.Size(115, 25);
+            this.labelVitalTimeStamp.Size = new System.Drawing.Size(61, 13);
             this.labelVitalTimeStamp.TabIndex = 7;
             this.labelVitalTimeStamp.Text = "Timestamp:";
             // 
             // button_VitalAdd
             // 
-            this.button_VitalAdd.Location = new System.Drawing.Point(999, 460);
+            this.button_VitalAdd.Location = new System.Drawing.Point(545, 249);
+            this.button_VitalAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_VitalAdd.Name = "button_VitalAdd";
-            this.button_VitalAdd.Size = new System.Drawing.Size(141, 39);
+            this.button_VitalAdd.Size = new System.Drawing.Size(77, 21);
             this.button_VitalAdd.TabIndex = 8;
             this.button_VitalAdd.Text = "Add";
             this.button_VitalAdd.UseVisualStyleBackColor = true;
@@ -151,76 +162,84 @@
             // 
             // button_SearchVital
             // 
-            this.button_SearchVital.Location = new System.Drawing.Point(1219, 460);
+            this.button_SearchVital.Location = new System.Drawing.Point(665, 249);
+            this.button_SearchVital.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_SearchVital.Name = "button_SearchVital";
-            this.button_SearchVital.Size = new System.Drawing.Size(141, 39);
+            this.button_SearchVital.Size = new System.Drawing.Size(77, 21);
             this.button_SearchVital.TabIndex = 8;
             this.button_SearchVital.Text = "Search";
             this.button_SearchVital.UseVisualStyleBackColor = true;
             this.button_SearchVital.Click += new System.EventHandler(this.button_SearchVital_Click);
             // 
-            // textBox_VitalPatientID
+            // textBox_PatientID
             // 
-            this.textBox_VitalPatientID.Location = new System.Drawing.Point(318, 84);
-            this.textBox_VitalPatientID.Name = "textBox_VitalPatientID";
-            this.textBox_VitalPatientID.Size = new System.Drawing.Size(200, 29);
-            this.textBox_VitalPatientID.TabIndex = 9;
+            this.textBox_PatientID.Location = new System.Drawing.Point(173, 46);
+            this.textBox_PatientID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_PatientID.Name = "textBox_PatientID";
+            this.textBox_PatientID.Size = new System.Drawing.Size(111, 20);
+            this.textBox_PatientID.TabIndex = 9;
             // 
-            // textBox_VitalHeartRate
+            // textBox_HeartRate
             // 
-            this.textBox_VitalHeartRate.Location = new System.Drawing.Point(318, 160);
-            this.textBox_VitalHeartRate.Name = "textBox_VitalHeartRate";
-            this.textBox_VitalHeartRate.Size = new System.Drawing.Size(200, 29);
-            this.textBox_VitalHeartRate.TabIndex = 9;
+            this.textBox_HeartRate.Location = new System.Drawing.Point(173, 87);
+            this.textBox_HeartRate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_HeartRate.Name = "textBox_HeartRate";
+            this.textBox_HeartRate.Size = new System.Drawing.Size(111, 20);
+            this.textBox_HeartRate.TabIndex = 9;
             // 
-            // textBox_VitalBP
+            // textBox_BloodPressure
             // 
-            this.textBox_VitalBP.Location = new System.Drawing.Point(318, 241);
-            this.textBox_VitalBP.Name = "textBox_VitalBP";
-            this.textBox_VitalBP.Size = new System.Drawing.Size(200, 29);
-            this.textBox_VitalBP.TabIndex = 9;
+            this.textBox_BloodPressure.Location = new System.Drawing.Point(173, 131);
+            this.textBox_BloodPressure.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_BloodPressure.Name = "textBox_BloodPressure";
+            this.textBox_BloodPressure.Size = new System.Drawing.Size(111, 20);
+            this.textBox_BloodPressure.TabIndex = 9;
             // 
-            // textBox_VitalTemp
+            // textBox_Temperature
             // 
-            this.textBox_VitalTemp.Location = new System.Drawing.Point(318, 319);
-            this.textBox_VitalTemp.Name = "textBox_VitalTemp";
-            this.textBox_VitalTemp.Size = new System.Drawing.Size(200, 29);
-            this.textBox_VitalTemp.TabIndex = 9;
+            this.textBox_Temperature.Location = new System.Drawing.Point(173, 173);
+            this.textBox_Temperature.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Temperature.Name = "textBox_Temperature";
+            this.textBox_Temperature.Size = new System.Drawing.Size(111, 20);
+            this.textBox_Temperature.TabIndex = 9;
             // 
-            // textBox_VitalOxygen
+            // textBox_OxygenLevel
             // 
-            this.textBox_VitalOxygen.Location = new System.Drawing.Point(318, 386);
-            this.textBox_VitalOxygen.Name = "textBox_VitalOxygen";
-            this.textBox_VitalOxygen.Size = new System.Drawing.Size(200, 29);
-            this.textBox_VitalOxygen.TabIndex = 9;
+            this.textBox_OxygenLevel.Location = new System.Drawing.Point(173, 209);
+            this.textBox_OxygenLevel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_OxygenLevel.Name = "textBox_OxygenLevel";
+            this.textBox_OxygenLevel.Size = new System.Drawing.Size(111, 20);
+            this.textBox_OxygenLevel.TabIndex = 9;
             // 
             // label_Vital
             // 
             this.label_Vital.AutoSize = true;
-            this.label_Vital.Location = new System.Drawing.Point(80, 31);
+            this.label_Vital.Location = new System.Drawing.Point(44, 17);
+            this.label_Vital.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_Vital.Name = "label_Vital";
-            this.label_Vital.Size = new System.Drawing.Size(50, 25);
+            this.label_Vital.Size = new System.Drawing.Size(27, 13);
             this.label_Vital.TabIndex = 0;
             this.label_Vital.Text = "Vital";
             // 
             // textBox_VitalID
             // 
-            this.textBox_VitalID.Location = new System.Drawing.Point(318, 31);
+            this.textBox_VitalID.Location = new System.Drawing.Point(173, 17);
+            this.textBox_VitalID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox_VitalID.Name = "textBox_VitalID";
-            this.textBox_VitalID.Size = new System.Drawing.Size(200, 29);
+            this.textBox_VitalID.Size = new System.Drawing.Size(111, 20);
             this.textBox_VitalID.TabIndex = 9;
             // 
             // Vital
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1559, 584);
-            this.Controls.Add(this.textBox_VitalOxygen);
-            this.Controls.Add(this.textBox_VitalTemp);
-            this.Controls.Add(this.textBox_VitalBP);
-            this.Controls.Add(this.textBox_VitalHeartRate);
+            this.ClientSize = new System.Drawing.Size(850, 316);
+            this.Controls.Add(this.textBox_OxygenLevel);
+            this.Controls.Add(this.textBox_Temperature);
+            this.Controls.Add(this.textBox_BloodPressure);
+            this.Controls.Add(this.textBox_HeartRate);
             this.Controls.Add(this.textBox_VitalID);
-            this.Controls.Add(this.textBox_VitalPatientID);
+            this.Controls.Add(this.textBox_PatientID);
             this.Controls.Add(this.button_SearchVital);
             this.Controls.Add(this.button_VitalAdd);
             this.Controls.Add(this.labelVitalTimeStamp);
@@ -234,6 +253,7 @@
             this.Controls.Add(this.label_HeartRate);
             this.Controls.Add(this.label_Vital);
             this.Controls.Add(this.label_SelectPatient);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Vital";
             this.Text = "Vital";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -256,11 +276,11 @@
         private System.Windows.Forms.Label labelVitalTimeStamp;
         private System.Windows.Forms.Button button_VitalAdd;
         private System.Windows.Forms.Button button_SearchVital;
-        private System.Windows.Forms.TextBox textBox_VitalPatientID;
-        private System.Windows.Forms.TextBox textBox_VitalHeartRate;
-        private System.Windows.Forms.TextBox textBox_VitalBP;
-        private System.Windows.Forms.TextBox textBox_VitalTemp;
-        private System.Windows.Forms.TextBox textBox_VitalOxygen;
+        private System.Windows.Forms.TextBox textBox_PatientID;
+        private System.Windows.Forms.TextBox textBox_HeartRate;
+        private System.Windows.Forms.TextBox textBox_BloodPressure;
+        private System.Windows.Forms.TextBox textBox_Temperature;
+        private System.Windows.Forms.TextBox textBox_OxygenLevel;
         private System.Windows.Forms.Label label_Vital;
         private System.Windows.Forms.TextBox textBox_VitalID;
     }

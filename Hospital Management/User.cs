@@ -1,14 +1,25 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Driver;
+using MongoDB.Driver.Core.Configuration;
+using MongoDB.Driver.Core.Events;
+using MongoDB.Driver.Linq;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using MongoDB.Driver;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Hospital_Management
 {
@@ -19,27 +30,38 @@ namespace Hospital_Management
             InitializeComponent();
         }
 
-        private async void buttonUserAdd_Click(object sender, EventArgs e)
+        private async void button_InventoryAdd_Click(object sender, EventArgs e)
         {
-            string url = "";
+            string UserID = textBox_UserID.Text;
+            string Username = textBox_Username.Text;
+            string PasswordHash = textBox_PasswordHash.Text;
+            string Role = textBox_Role.Text;
+            string Email = textBox_Email.Text;
+            string Phone = textBox_Phone.Text;
+
+            string url = $"http://xlynseyes.ddns.net:3001/add_User?UserID={UserID}&Username={Username}&PasswordHash={PasswordHash}&Role={Role}&Email={Email}&Phone={Phone}";
+            MessageBox.Show(url);
 
             using (HttpClient client = new HttpClient())
             {
                 HttpResponseMessage response = await client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Inventory added!");
+                    MessageBox.Show("Item added successfully!");
                 }
                 else
                 {
-                    MessageBox.Show("Error adding inventory.");
+                    MessageBox.Show("Error adding item.");
                 }
             }
         }
 
-        private async void buttonUserSearch_Click(object sender, EventArgs e)
+        private async void button_Search_Click(object sender, EventArgs e)
         {
-            string url = "";
+
+            string url = $"http://xlynseyes.ddns.net:3001/User?UserID={textBox_UserID.Text}&Username={textBox_Username.Text}&PasswordHash={textBox_PasswordHash.Text}&Role={textBox_Role.Text}&Email={textBox_Email.Text}&Phone={textBox_Phone.Text}";
+            MessageBox.Show(url);
+
             using (HttpClient client = new HttpClient())
             {
                 HttpResponseMessage response = await client.GetAsync(url);
@@ -57,3 +79,4 @@ namespace Hospital_Management
         }
     }
 }
+

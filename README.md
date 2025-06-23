@@ -1,11 +1,13 @@
 Server is Up! <br>
+
+SSMS use the provided SSMS_SETUP.sql and run it! (copy server name >> connection strings in Frontend VB) 
 <br>
 check in the MogoDB directory for the models and the CURL Endpoint commands (README) <<<<<<<<<<<<<<<<<<<<<<<
 <br>
 
 
 # MongoDB ERD Core Entities and Relationships
-Use MOngoDB for USERs
+Using MongoDB for USERs rest SSMS
 ## 1. Users
 Attributes: 
 - **UserID** (PK)

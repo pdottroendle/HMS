@@ -50,7 +50,7 @@ namespace Hospital_Management
 
         private void buttonInventoryLogs_Click(object sender, EventArgs e)
         {
-            Inventory InventoryLog = new Inventory();
+            InventoryLog InventoryLog = new InventoryLog();
             InventoryLog.ShowDialog();
         }
 
