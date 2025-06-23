@@ -55,21 +55,20 @@ app.get('/add_Users', async (req, res) => {
   }
 });
 
-
-// Search Users
 app.get('/Users', async (req, res) => {
+  const { UserID, Username, PasswordHash, Role, Email, Phone } = req.query;
+  // Build the query object dynamically
   const query = {};
-  const fields = ['UserID', 'Username', 'PasswordHash', 'Role', 'Email', 'Phone'];
-  fields.forEach(field => {
-    if (req.query[field] && req.query[field] !== '') {
-      query[field] = req.query[field];
-    }
-  });
+  if (UserID) query.UserID = UserID;
+  if (Username) query.Username = Username;
+  if (PasswordHash) query.PasswordHash = PasswordHash;
+  if (Email) query.Email =  Email;
+  if (Phone) query.Phone = Phone;  
   try {
-    const users = await User.find(query);
-    res.status(200).json(users);
+    const results = await Users.find(query);
+    res.status(200).json(results);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to search users', details: err.message });
+    res.status(500).json({ error: 'Failed to fetch Users items', details: err.message });
   }
 });
 
@@ -91,18 +90,22 @@ app.get('/add_Patients', async (req, res) => {
 });
 
 app.get('/Patients', async (req, res) => {
+  const { PatientID, UserID, Name, DOB, Gender, Address, ContactInfo, MedicalHistory} = req.query;
+  // Build the query object dynamically
   const query = {};
-  const fields = ['PatientID', 'UserID', 'Name', 'DOB', 'Gender', 'Address', 'ContactInfo', 'MedicalHistory'];
-  fields.forEach(field => {
-    if (req.query[field] && req.query[field] !== '') {
-      query[field] = req.query[field];
-    }
-  });
+  if (PatientID) query.PatientID = PatientID;
+  if (UserID) query.UserID = UserID;  
+  if (Name) query.Name = Name;
+  if (DOB) query.DOB = DOB;  
+  if (Gender) query.Gender = Gender;  
+  if (Address) query.Address = Address;
+  if (ContactInfo) query.ContactInfo = ContactInfo;  
+  if (MedicalHistory) query.MedicalHistory = MedicalHistory;
   try {
-    const patients = await Patient.find(query);
-    res.status(200).json(patients);
+    const results = await Patients.find(query);
+    res.status(200).json(results);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to search patients', details: err.message });
+    res.status(500).json({ error: 'Failed to fetch Patients items', details: err.message });
   }
 });
 
@@ -124,18 +127,20 @@ app.get('/add_Appointments', async (req, res) => {
 });
 
 app.get('/Appointments', async (req, res) => {
+  const { AppointmentID, PatientID, DoctorID, DateTime, Status, Notes } = req.query;
+  // Build the query object dynamically
   const query = {};
-  const fields = ['AppointmentID', 'PatientID', 'DoctorID', 'DateTime', 'Status', 'Notes'];
-  fields.forEach(field => {
-    if (req.query[field] && req.query[field] !== '') {
-      query[field] = req.query[field];
-    }
-  });
+  if (AppointmentID) query.AppointmentID = AppointmentID;
+  if (PatientID) query.PatientID = PatientID;
+  if (DoctorID) query.DoctorID = DoctorID;
+  if (DateTime) query.DateTime =  new Date(DateTime);
+  if (Status) query.Status = Status;  
+  if (Notes) query.Notes = Notes;
   try {
-    const appointments = await Appointment.find(query);
-    res.status(200).json(appointments);
+    const results = await Appointments.find(query);
+    res.status(200).json(results);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to search appointments', details: err.message });
+    res.status(500).json({ error: 'Failed to fetch Appointments items', details: err.message });
   }
 });
 
@@ -145,7 +150,6 @@ app.get('/add_Inventory', async (req, res) => {
   if (!ItemID || !Name || !Quantity || !Threshold || !LastUpdated) {
     return res.status(400).json({ error: 'All fields are required' });
   }
-
   try {
     await Inventory.findOneAndUpdate(
       { ItemID },
@@ -160,20 +164,22 @@ app.get('/add_Inventory', async (req, res) => {
 
 
 app.get('/Inventory', async (req, res) => {
+  const { ItemID, Name, Quantity, Threshold, LastUpdated } = req.query;
+  // Build the query object dynamically
   const query = {};
-  const fields = ['ItemID', 'Name', 'Quantity', 'Threshold', 'LastUpdated'];
-  fields.forEach(field => {
-    if (req.query[field] && req.query[field] !== '') {
-      query[field] = req.query[field];
-    }
-  });
+  if (ItemID) query.ItemID = ItemID;
+  if (Name) query.Name = Name;
+  if (Quantity) query.Quantity = Number(Quantity);
+  if (Threshold) query.Threshold = Number(Threshold);
+  if (LastUpdated) query.LastUpdated = new Date(LastUpdated);
   try {
-    const items = await Inventory.find(query);
-    res.status(200).json(items);
+    const results = await Inventory.find(query);
+    res.status(200).json(results);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to search inventory', details: err.message });
+    res.status(500).json({ error: 'Failed to fetch inventory items', details: err.message });
   }
 });
+
 app.get('/add_InventoryLogs', async (req, res) => {
   const { LogID, ItemID, ChangeAmount, Timestamp, UserID, Reason } = req.query;
   if (!LogID || !ItemID || !ChangeAmount || !Timestamp || !UserID || !Reason) {
@@ -192,20 +198,23 @@ app.get('/add_InventoryLogs', async (req, res) => {
 });
 
 app.get('/InventoryLogs', async (req, res) => {
+  const { LogID, ItemID, ChangeAmount, Timestamp, UserID, Reason } = req.query;
+  // Build the query object dynamically
   const query = {};
-  const fields = ['LogID', 'ItemID', 'ChangeAmount', 'Timestamp', 'UserID', 'Reason'];
-  fields.forEach(field => {
-    if (req.query[field] && req.query[field] !== '') {
-      query[field] = req.query[field];
-    }
-  });
+  if (LogID) query.LogID = LogID;
+  if (ItemID) query.ItemID = ItemID;
+  if (ChangeAmount) query.ChangeAmount = Number(ChangeAmount);
+  if (Timestamp) query.Timestamp = new Date(Timestamp);
+  if (UserID) query.UserID = UserID;  
+  if (Reason) query.Reason = Reason;
   try {
-    const logs = await InventoryLog.find(query);
-    res.status(200).json(logs);
+    const results = await InventoryLogs.find(query);
+    res.status(200).json(results);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to search inventory logs', details: err.message });
+    res.status(500).json({ error: 'Failed to fetch InventoryLogs items', details: err.message });
   }
 });
+
 app.get('/add_Vitals', async (req, res) => {
   const { VitalID, PatientID, Timestamp, HeartRate, BloodPressure, Temperature, OxygenLevel } = req.query;
   if (!VitalID || !PatientID || !Timestamp || !HeartRate || !BloodPressure || !Temperature || !OxygenLevel) {
@@ -224,20 +233,24 @@ app.get('/add_Vitals', async (req, res) => {
 });
 
 app.get('/Vitals', async (req, res) => {
+  const { VitalID, PatientID, Timestamp, HeartRate, BloodPressure, Temperature, OxygenLevel} = req.query;
+  // Build the query object dynamically
   const query = {};
-  const fields = ['VitalID', 'PatientID', 'Timestamp', 'HeartRate', 'BloodPressure', 'Temperature', 'OxygenLevel'];
-  fields.forEach(field => {
-    if (req.query[field] && req.query[field] !== '') {
-      query[field] = req.query[field];
-    }
-  });
+  if (VitalID) query.VitalID = VitalID;
+  if (PatientID) query.PatientID = PatientID;
+  if (Timestamp) query.Timestamp = new Date(Timestamp);  
+  if (HeartRate) query.HeartRate = Number(HeartRate);  
+  if (BloodPressure) query.BloodPressure = Number(BloodPressure);
+  if (Temperature) query.Temperature = Number(Temperature);  
+  if (OxygenLevel) query.OxygenLevel = Number(OxygenLevel);
   try {
-    const vitals = await Vital.find(query);
-    res.status(200).json(vitals);
+    const results = await Vitals.find(query);
+    res.status(200).json(results);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to search vitals', details: err.message });
+    res.status(500).json({ error: 'Failed to fetch Vitals items', details: err.message });
   }
 });
+
 app.get('/add_Messages', async (req, res) => {
   const { MessageID, SenderID, ReceiverID, Timestamp, Content } = req.query;
   if (!MessageID || !SenderID || !ReceiverID || !Timestamp || !Content) {
@@ -256,20 +269,22 @@ app.get('/add_Messages', async (req, res) => {
 });
 
 app.get('/Messages', async (req, res) => {
+  const { MessageID, SenderID, ReceiverID, Timestamp, Content} = req.query;
+  // Build the query object dynamically
   const query = {};
-  const fields = ['MessageID', 'SenderID', 'ReceiverID', 'Timestamp', 'Content'];
-  fields.forEach(field => {
-    if (req.query[field] && req.query[field] !== '') {
-      query[field] = req.query[field];
-    }
-  });
+  if (MessageID) query.MessageID = MessageID;
+  if (SenderID) query.SenderID = SenderID;  
+  if (ReceiverID) query.ReceiverID = ReceiverID;
+  if (Timestamp) query.Timestamp = new Date(Timestamp);  
+  if (Content) query.Content = Content;  
   try {
-    const messages = await Message.find(query);
-    res.status(200).json(messages);
+    const results = await Messages.find(query);
+    res.status(200).json(results);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to search messages', details: err.message });
+    res.status(500).json({ error: 'Failed to fetch Messages items', details: err.message });
   }
 });
+
 app.get('/add_Notifications', async (req, res) => {
   const { NotificationID, UserID, Message, Timestamp, IsRead } = req.query;
   if (!NotificationID || !UserID || !Message || !Timestamp) {
@@ -281,7 +296,6 @@ app.get('/add_Notifications', async (req, res) => {
       { UserID, Message, Timestamp, IsRead },
       { upsert: true, new: true }
     );   
-    
 res.status(200).json({ message: 'Notification added successfully!' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to add notification', details: err.message });
@@ -289,20 +303,23 @@ res.status(200).json({ message: 'Notification added successfully!' });
 });
 
 app.get('/Notifications', async (req, res) => {
+  const { NotificationID, UserID, Message, Timestamp, IsRead} = req.query;
+  // Build the query object dynamically
   const query = {};
-  const fields = ['NotificationID', 'UserID', 'Message', 'Timestamp', 'IsRead'];
-  fields.forEach(field => {
-    if (req.query[field] && req.query[field] !== '') {
-      query[field] = req.query[field];
-    }
-  });
+  if (NotificationID) query.NotificationID = NotificationID;
+  if (UserID) query.UserID = UserID;  
+  if (Message) query.Message = Message;
+  if (Timestamp) query.Timestamp = new Date(Timestamp);  
+  if (HeartRate) query.HeartRate = Number(HeartRate);  
+  if (IsRead) query.IsRead = IsRead;
   try {
-    const notifications = await Notification.find(query);
-    res.status(200).json(notifications);
+    const results = await Notifications.find(query);
+    res.status(200).json(results);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to search notifications', details: err.message });
+    res.status(500).json({ error: 'Failed to fetch Notifications items', details: err.message });
   }
 });
+
 app.get('/add_Reports', async (req, res) => {
   const { ReportID, Type, GeneratedBy, Timestamp, FilePath } = req.query;
   if (!ReportID || !Type || !GeneratedBy || !Timestamp || !FilePath) {
@@ -321,18 +338,19 @@ app.get('/add_Reports', async (req, res) => {
 });
 
 app.get('/Reports', async (req, res) => {
+  const { ReportID, Type, GeneratedBy, Timestamp, FilePath} = req.query;
+  // Build the query object dynamically
   const query = {};
-  const fields = ['ReportID', 'Type', 'GeneratedBy', 'Timestamp', 'FilePath'];
-  fields.forEach(field => {
-    if (req.query[field] && req.query[field] !== '') {
-      query[field] = req.query[field];
-    }
-  });
+  if (ReportID) query.ReportID = ReportID;
+  if (Type) query.Type = Type;  
+  if (GeneratedBy) query.GeneratedBy = GeneratedBy;
+  if (Timestamp) query.Timestamp = new Date(Timestamp);  
+  if (FilePath) query.FilePath = FilePath;  
   try {
-    const reports = await Report.find(query);
-    res.status(200).json(reports);
+    const results = await Reports.find(query);
+    res.status(200).json(results);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to search reports', details: err.message });
+    res.status(500).json({ error: 'Failed to fetch Reports items', details: err.message });
   }
 });
 
