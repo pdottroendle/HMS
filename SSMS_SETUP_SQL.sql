@@ -85,6 +85,15 @@ CREATE TABLE Inventory (
 );
 
 
+CREATE TABLE Dashboard (
+    DashboardID NVARCHAR(255) PRIMARY KEY,
+    WardName NVARCHAR(255),
+    BedAvailability NVARCHAR(255),
+    EmergencyStatus NVARCHAR(255),
+    Timestamp NVARCHAR(255)
+);
+
+
 USE HMSDB;
 GO
 
