@@ -21,7 +21,7 @@ namespace Hospital_Management
             InitializeComponent();
             textBox_NotificationTime.Text = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ");
             textBox_NotificationTime.ReadOnly = true;
-            checkBox_IsRead.Checked = false;
+            textBox_IsRead.Text = "0"; // default value: unread
         }
         // helping connect to SQL databases
         public class NotificationSqlHelper
@@ -62,7 +62,7 @@ namespace Hospital_Management
         {
             string notificationId = textBox_NotificationID.Text;
             string userId = textBox_UserID.Text;
-            string message = textBox_Message.Text;
+            string message = textBox_NotificationMessage.Text;
 
             if (!DateTime.TryParse(textBox_NotificationTime.Text, out DateTime timestamp))
             {
@@ -70,9 +70,9 @@ namespace Hospital_Management
                 return;
             }
 
-            if (!int.TryParse(checkBox_IsRead.Text, out int isRead))
+            if (!int.TryParse(textBox_IsRead.Text, out int isRead))
             {
-                MessageBox.Show("Please enter 0 or 1 for IsRead.");
+                MessageBox.Show("Please enter 0 (unread) or 1 (read) for IsRead.");
                 return;
             }
 
@@ -82,41 +82,61 @@ namespace Hospital_Management
             MessageBox.Show("Notification added or updated successfully!");
         }
 
+
         // this button is to view the information for notification
         private void button_NotificationSearch_Click(object sender, EventArgs e)
         {
             string connectionString = "Server=LAPTOP-MSNOAR3O\\SQLEXPRESS01;Database=HMSDB;Trusted_Connection=True;";
             string query = "SELECT * FROM Notification WHERE 1=1";
 
-            if (!string.IsNullOrWhiteSpace(textBox_NotificationID.Text))
-                query += " AND NotificationID = @NotificationID";
-            if (!string.IsNullOrWhiteSpace(textBox_UserID.Text))
-                query += " AND UserID = @UserID";
-            if (!string.IsNullOrWhiteSpace(textBox_Message.Text))
-                query += " AND Message LIKE @Message";
-            if (!string.IsNullOrWhiteSpace(textBox_NotificationTime.Text))
-                query += " AND Timestamp = @Timestamp";
-            if (!string.IsNullOrWhiteSpace(checkBox_IsRead.Text))
-                query += " AND IsRead = @IsRead";
-
             using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlCommand cmd = new SqlCommand())
             {
+                cmd.Connection = conn;
+
                 if (!string.IsNullOrWhiteSpace(textBox_NotificationID.Text))
+                {
+                    query += " AND NotificationID = @NotificationID";
                     cmd.Parameters.AddWithValue("@NotificationID", textBox_NotificationID.Text);
+                }
+
                 if (!string.IsNullOrWhiteSpace(textBox_UserID.Text))
+                {
+                    query += " AND UserID = @UserID";
                     cmd.Parameters.AddWithValue("@UserID", textBox_UserID.Text);
+                }
+
                 if (!string.IsNullOrWhiteSpace(textBox_Message.Text))
-                    cmd.Parameters.AddWithValue("@Message", "%" + textBox_Message.Text + "%");
-                if (!string.IsNullOrWhiteSpace(textBox_NotificationTime.Text))
-                    cmd.Parameters.AddWithValue("@Timestamp", DateTime.Parse(textBox_NotificationTime.Text));
-                if (!string.IsNullOrWhiteSpace(checkBox_IsRead.Text))
-                    cmd.Parameters.AddWithValue("@IsRead", int.Parse(checkBox_IsRead.Text));
+                {
+                    query += " AND Message LIKE @Message";
+                    cmd.Parameters.AddWithValue("@Message", "%" + textBox_NotificationMessage.Text + "%");
+                }
+
+                if (!string.IsNullOrWhiteSpace(textBox_IsRead.Text) && int.TryParse(textBox_IsRead.Text, out int isRead))
+                {
+                    query += " AND IsRead = @IsRead";
+                    cmd.Parameters.AddWithValue("@IsRead", isRead);
+                }
+
+                // Only use Timestamp if user wants to filter by exact time
+                if (!string.IsNullOrWhiteSpace(textBox_NotificationTime.Text) &&
+                    DateTime.TryParse(textBox_NotificationTime.Text, out DateTime timestamp))
+                {
+                    query += " AND CAST(Timestamp AS DATE) = @Timestamp";
+                    cmd.Parameters.AddWithValue("@Timestamp", timestamp.Date);
+                }
+
+                cmd.CommandText = query;
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable table = new DataTable();
                 adapter.Fill(table);
                 dataGridView_Notification.DataSource = table;
+
+                if (table.Rows.Count == 0)
+                {
+                    MessageBox.Show("No results found.");
+                }
             }
         }
 
