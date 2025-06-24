@@ -13,19 +13,14 @@ namespace Hospital_Management
     
     public class PatientData
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string PatientID { get; set; }
-
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string UserID { get; set; }
-
+        public string PatientID { get; set; }       // Primary Key
+        public string UserID { get; set; }          // Foreign Key to Users
         public string Name { get; set; }
         public DateTime DOB { get; set; }
         public string Gender { get; set; }
         public string Address { get; set; }
         public string ContactInfo { get; set; }
-        public string MedicalHistory { get; set; } // File path
+        public string MedicalHistory { get; set; }  // Path or text summary
 
     }
 }

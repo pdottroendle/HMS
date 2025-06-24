@@ -45,20 +45,19 @@
             this.button_Search = new System.Windows.Forms.Button();
             this.button_Add = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox_Phone = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.buttonUserAdd = new System.Windows.Forms.Button();
+            this.buttonUserSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox_Email
             // 
-            this.textBox_Email.Location = new System.Drawing.Point(173, 227);
-            this.textBox_Email.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_Email.Name = "textBox_Email";
-            this.textBox_Email.Size = new System.Drawing.Size(56, 20);
-            this.textBox_Email.TabIndex = 23;
+            this.label_Username.AutoSize = true;
+            this.label_Username.Location = new System.Drawing.Point(133, 148);
+            this.label_Username.Name = "label_Username";
+            this.label_Username.Size = new System.Drawing.Size(108, 25);
+            this.label_Username.TabIndex = 0;
+            this.label_Username.Text = "Username:";
             // 
             // textBox2
             // 
@@ -160,25 +159,21 @@
             // 
             // button_Search
             // 
-            this.button_Search.Location = new System.Drawing.Point(281, 258);
-            this.button_Search.Margin = new System.Windows.Forms.Padding(2);
-            this.button_Search.Name = "button_Search";
-            this.button_Search.Size = new System.Drawing.Size(82, 25);
-            this.button_Search.TabIndex = 7;
-            this.button_Search.Text = "Search Item";
-            this.button_Search.UseVisualStyleBackColor = true;
-            this.button_Search.Click += new System.EventHandler(this.button_Search_Click);
+            this.labelUserPassword.AutoSize = true;
+            this.labelUserPassword.Location = new System.Drawing.Point(133, 222);
+            this.labelUserPassword.Name = "labelUserPassword";
+            this.labelUserPassword.Size = new System.Drawing.Size(150, 25);
+            this.labelUserPassword.TabIndex = 0;
+            this.labelUserPassword.Text = "PasswordHash:";
             // 
             // button_Add
             // 
-            this.button_Add.Location = new System.Drawing.Point(281, 223);
-            this.button_Add.Margin = new System.Windows.Forms.Padding(2);
-            this.button_Add.Name = "button_Add";
-            this.button_Add.Size = new System.Drawing.Size(82, 24);
-            this.button_Add.TabIndex = 8;
-            this.button_Add.Text = "Add Item";
-            this.button_Add.UseVisualStyleBackColor = true;
-            this.button_Add.Click += new System.EventHandler(this.button_InventoryAdd_Click);
+            this.labelUserRole.AutoSize = true;
+            this.labelUserRole.Location = new System.Drawing.Point(133, 292);
+            this.labelUserRole.Name = "labelUserRole";
+            this.labelUserRole.Size = new System.Drawing.Size(57, 25);
+            this.labelUserRole.TabIndex = 0;
+            this.labelUserRole.Text = "Role:";
             // 
             // dataGridView1
             // 
@@ -225,31 +220,70 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Phone:";
             // 
+            // label_UserEmail
+            // 
+            this.label_UserEmail.AutoSize = true;
+            this.label_UserEmail.Location = new System.Drawing.Point(87, 371);
+            this.label_UserEmail.Name = "label_UserEmail";
+            this.label_UserEmail.Size = new System.Drawing.Size(66, 25);
+            this.label_UserEmail.TabIndex = 0;
+            this.label_UserEmail.Text = "Email:";
+            // 
+            // label_UserPhone
+            // 
+            this.label_UserPhone.AutoSize = true;
+            this.label_UserPhone.Location = new System.Drawing.Point(78, 448);
+            this.label_UserPhone.Name = "label_UserPhone";
+            this.label_UserPhone.Size = new System.Drawing.Size(75, 25);
+            this.label_UserPhone.TabIndex = 0;
+            this.label_UserPhone.Text = "Phone:";
+            // 
+            // textBox_UserName
+            // 
+            this.textBox_UserName.Location = new System.Drawing.Point(341, 120);
+            this.textBox_UserName.Name = "textBox_UserName";
+            this.textBox_UserName.Size = new System.Drawing.Size(100, 29);
+            this.textBox_UserName.TabIndex = 3;
+            // 
+            // textBox_PasswordHash
+            // 
+            this.textBox_PasswordHash.Location = new System.Drawing.Point(341, 202);
+            this.textBox_PasswordHash.Name = "textBox_PasswordHash";
+            this.textBox_PasswordHash.Size = new System.Drawing.Size(100, 29);
+            this.textBox_PasswordHash.TabIndex = 3;
+            // 
+            // textBox_UserRole
+            // 
+            this.textBox_UserRole.Location = new System.Drawing.Point(341, 292);
+            this.textBox_UserRole.Name = "textBox_UserRole";
+            this.textBox_UserRole.Size = new System.Drawing.Size(100, 29);
+            this.textBox_UserRole.TabIndex = 3;
+            // 
+            // textBox_UserEmail
+            // 
+            this.textBox_UserEmail.Location = new System.Drawing.Point(341, 367);
+            this.textBox_UserEmail.Name = "textBox_UserEmail";
+            this.textBox_UserEmail.Size = new System.Drawing.Size(100, 29);
+            this.textBox_UserEmail.TabIndex = 3;
+            // 
+            // textBox_UserPhone
+            // 
+            this.textBox_UserPhone.Location = new System.Drawing.Point(341, 444);
+            this.textBox_UserPhone.Name = "textBox_UserPhone";
+            this.textBox_UserPhone.Size = new System.Drawing.Size(100, 29);
+            this.textBox_UserPhone.TabIndex = 3;
+            // 
             // User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1222, 444);
-            this.Controls.Add(this.textBox_Phone);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox_Email);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox_Role);
-            this.Controls.Add(this.textBox_PasswordHash);
-            this.Controls.Add(this.label_LastUpdate);
-            this.Controls.Add(this.textBox_UserID);
-            this.Controls.Add(this.label_ThresHold);
-            this.Controls.Add(this.label_InventoryQuantity);
-            this.Controls.Add(this.textBox_Username);
-            this.Controls.Add(this.label_InventoryName);
-            this.Controls.Add(this.label_UserID);
-            this.Controls.Add(this.button_Search);
-            this.Controls.Add(this.button_Add);
+            this.ClientSize = new System.Drawing.Size(1541, 566);
+            this.Controls.Add(this.buttonUserSearch);
+            this.Controls.Add(this.buttonUserAdd);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Controls.Add(this.labelUserRole);
+            this.Controls.Add(this.labelUserPassword);
+            this.Controls.Add(this.label_Username);
             this.Name = "User";
             this.Text = "User";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -275,9 +309,7 @@
         private System.Windows.Forms.Button button_Search;
         private System.Windows.Forms.Button button_Add;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox_Phone;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonUserAdd;
+        private System.Windows.Forms.Button buttonUserSearch;
     }
 }
