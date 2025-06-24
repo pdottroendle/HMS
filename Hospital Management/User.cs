@@ -29,12 +29,13 @@ namespace Hospital_Management
         {
             InitializeComponent();
         }
-
-        private async void button_InventoryAdd_Click(object sender, EventArgs e)
+        // This async need to be using for MongoDB connection
+        // This add will allow user to register to the system
+        private async void button_Add_Click(object sender, EventArgs e)
         {
             string UserID = textBox_UserID.Text;
             string Username = textBox_Username.Text;
-            string PasswordHash = textBox_PasswordHash.Text;
+            string PasswordHash = textBox_Password.Text;
             string Role = textBox_Role.Text;
             string Email = textBox_Email.Text;
             string Phone = textBox_Phone.Text;
@@ -55,11 +56,11 @@ namespace Hospital_Management
                 }
             }
         }
-
+        // This is the login for users
         private async void button_Search_Click(object sender, EventArgs e)
         {
 
-            string url = $"http://xlynseyes.ddns.net:3001/User?UserID={textBox_UserID.Text}&Username={textBox_Username.Text}&PasswordHash={textBox_PasswordHash.Text}&Role={textBox_Role.Text}&Email={textBox_Email.Text}&Phone={textBox_Phone.Text}";
+            string url = $"http://xlynseyes.ddns.net:3001/User?UserID={textBox_UserID.Text}&Username={textBox_Username.Text}&PasswordHash={textBox_Password.Text}&Role={textBox_Role.Text}&Email={textBox_Email.Text}&Phone={textBox_Phone.Text}";
             MessageBox.Show(url);
 
             using (HttpClient client = new HttpClient())
@@ -77,6 +78,8 @@ namespace Hospital_Management
                 }
             }
         }
+
+     
     }
 }
 

@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 
 namespace Hospital_Management
 {
+    // loading the Notification form
     public partial class Notification : Form
     {
         public Notification()
@@ -22,9 +23,10 @@ namespace Hospital_Management
             textBox_NotificationTime.ReadOnly = true;
             checkBox_IsRead.Checked = false;
         }
+        // helping connect to SQL databases
         public class NotificationSqlHelper
         {
-            private string connectionString = "Server=OKQWERTY\\SQLEXPRESS;Database=HMSDB;Trusted_Connection=True;";
+            private string connectionString = "Server=LAPTOP-MSNOAR3O\\SQLEXPRESS01;Database=HMSDB;Trusted_Connection=True;";
 
             public void AddOrUpdateNotification(string notificationId, string userId, string message, DateTime timestamp, int isRead)
             {
@@ -55,8 +57,8 @@ namespace Hospital_Management
                 }
             }
         }
-
-        private async void button_NotificationAdd_Click(object sender, EventArgs e)
+        // add button for notification
+        private void button_NotificationAdd_Click(object sender, EventArgs e)
         {
             string notificationId = textBox_NotificationID.Text;
             string userId = textBox_UserID.Text;
@@ -80,10 +82,10 @@ namespace Hospital_Management
             MessageBox.Show("Notification added or updated successfully!");
         }
 
-
-        private async void button_NotificationSearch_Click(object sender, EventArgs e)
+        // this button is to view the information for notification
+        private void button_NotificationSearch_Click(object sender, EventArgs e)
         {
-            string connectionString = "Server=OKQWERTY\\SQLEXPRESS;Database=HMSDB;Trusted_Connection=True;";
+            string connectionString = "Server=LAPTOP-MSNOAR3O\\SQLEXPRESS01;Database=HMSDB;Trusted_Connection=True;";
             string query = "SELECT * FROM Notification WHERE 1=1";
 
             if (!string.IsNullOrWhiteSpace(textBox_NotificationID.Text))

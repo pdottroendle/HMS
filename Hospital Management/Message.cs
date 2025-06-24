@@ -10,16 +10,9 @@ namespace Hospital_Management
 {
     public class Message
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
         public string MessageID { get; set; }
-
-        [BsonRepresentation(BsonType.ObjectId)]
         public string SenderID { get; set; }
-
-        [BsonRepresentation(BsonType.ObjectId)]
         public string ReceiverID { get; set; }
-
         public DateTime Timestamp { get; set; }
         public string Content { get; set; }
     }

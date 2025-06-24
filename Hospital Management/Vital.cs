@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Newtonsoft.Json;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Hospital_Management
 {
@@ -20,8 +12,8 @@ namespace Hospital_Management
             InitializeComponent();
             dateTimePickerVital.Value = DateTime.UtcNow;
         }
-
-        private async void button_VitalAdd_Click(object sender, EventArgs e)
+        // This button allow to add patient monitoring data
+        private void button_VitalAdd_Click(object sender, EventArgs e)
         {
             string vitalId = textBox_VitalID.Text;
             string patientId = textBox_PatientID.Text;
@@ -46,9 +38,10 @@ namespace Hospital_Management
 
             MessageBox.Show("Vital record added or updated successfully!");
         }
+        // This help to connect to the vital table in SQL
         public class VitalSqlHelper
         {
-            private string connectionString = "Server=OKQWERTY\\SQLEXPRESS;Database=HMSDB;Trusted_Connection=True;";
+            private string connectionString = "Server=LAPTOP-MSNOAR3O\\SQLEXPRESS01;Database=HMSDB;Trusted_Connection=True;";
 
             public void AddOrUpdateVital(string vitalId, string patientId, DateTime timestamp, int heartRate, string bloodPressure, float temperature, int oxygenLevel)
             {
@@ -57,14 +50,20 @@ namespace Hospital_Management
                     conn.Open();
 
                     string query = @"
-                MERGE Vital AS target
-                USING (SELECT @VitalID AS VitalID) AS source
-                ON target.VitalID = source.VitalID
-                WHEN MATCHED THEN
-                    UPDATE SET PatientID = @PatientID, Timestamp = @Timestamp, HeartRate = @HeartRate, BloodPressure = @BloodPressure, Temperature = @Temperature, OxygenLevel = @OxygenLevel
-                WHEN NOT MATCHED THEN
-                    INSERT (VitalID, PatientID, Timestamp, HeartRate, BloodPressure, Temperature, OxygenLevel)
-                    VALUES (@VitalID, @PatientID, @Timestamp, @HeartRate, @BloodPressure, @Temperature, @OxygenLevel);";
+                        MERGE Vital AS target
+                        USING (SELECT @VitalID AS VitalID) AS source
+                        ON target.VitalID = source.VitalID
+                        WHEN MATCHED THEN
+                            UPDATE SET 
+                                PatientID = @PatientID, 
+                                Timestamp = @Timestamp, 
+                                HeartRate = @HeartRate, 
+                                BloodPressure = @BloodPressure, 
+                                Temperature = @Temperature, 
+                                OxygenLevel = @OxygenLevel
+                        WHEN NOT MATCHED THEN
+                            INSERT (VitalID, PatientID, Timestamp, HeartRate, BloodPressure, Temperature, OxygenLevel)
+                            VALUES (@VitalID, @PatientID, @Timestamp, @HeartRate, @BloodPressure, @Temperature, @OxygenLevel);";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -81,10 +80,10 @@ namespace Hospital_Management
                 }
             }
         }
-
-        private async void button_SearchVital_Click(object sender, EventArgs e)
+        // This is a View data button for information of patient monitoring
+        private void button_SearchVital_Click(object sender, EventArgs e)
         {
-            string connectionString = "Server=OKQWERTY\\SQLEXPRESS;Database=HMSDB;Trusted_Connection=True;";
+            string connectionString = "Server=LAPTOP-MSNOAR3O\\SQLEXPRESS01;Database=HMSDB;Trusted_Connection=True;";
             string query = "SELECT * FROM Vital WHERE 1=1";
 
             if (!string.IsNullOrWhiteSpace(textBox_VitalID.Text))
@@ -126,8 +125,5 @@ namespace Hospital_Management
                 dataGridView1.DataSource = table;
             }
         }
-
-
     }
 }
-

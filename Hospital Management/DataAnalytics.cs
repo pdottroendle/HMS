@@ -22,7 +22,7 @@ namespace Hospital_Management
         }
         public class ReportSqlHelper
         {
-            private string connectionString = "Server=OKQWERTY\\SQLEXPRESS;Database=HMSDB;Trusted_Connection=True;";
+            private string connectionString = "Server=LAPTOP-MSNOAR3O\\SQLEXPRESS01;Database=HMSDB;Trusted_Connection=True;";
 
             public void AddOrUpdateReport(string reportId, string type, string generatedBy, DateTime timestamp, string filePath)
             {
@@ -54,7 +54,7 @@ namespace Hospital_Management
             }
         }
 
-        private async void buttonDataAdd_Click(object sender, EventArgs e)
+        private void buttonDataAdd_Click(object sender, EventArgs e)
         {
             string reportId = textBox_ReportID.Text;
             string type = comboBoxReportType.Text;
@@ -74,9 +74,9 @@ namespace Hospital_Management
         }
 
 
-        private async void buttonDataSearch_Click(object sender, EventArgs e)
+        private void buttonDataSearch_Click(object sender, EventArgs e)
         {
-            string connectionString = "Server=OKQWERTY\\SQLEXPRESS;Database=HMSDB;Trusted_Connection=True;";
+            string connectionString = "Server=LAPTOP-MSNOAR3O\\SQLEXPRESS01;Database=HMSDB;Trusted_Connection=True;";
             string query = "SELECT * FROM Report WHERE 1=1";
 
             if (!string.IsNullOrWhiteSpace(textBox_ReportID.Text))

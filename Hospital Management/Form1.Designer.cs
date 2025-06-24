@@ -38,6 +38,7 @@
             this.button_ChatSystem = new System.Windows.Forms.Button();
             this.buttonInventoryLogs = new System.Windows.Forms.Button();
             this.button_Vital = new System.Windows.Forms.Button();
+            this.button_DashBoardUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label_hospitalManagementSystem
@@ -140,11 +141,22 @@
             this.button_Vital.UseVisualStyleBackColor = true;
             this.button_Vital.Click += new System.EventHandler(this.button_Vital_Click);
             // 
+            // button_DashBoardUpdate
+            // 
+            this.button_DashBoardUpdate.Location = new System.Drawing.Point(749, 478);
+            this.button_DashBoardUpdate.Name = "button_DashBoardUpdate";
+            this.button_DashBoardUpdate.Size = new System.Drawing.Size(312, 63);
+            this.button_DashBoardUpdate.TabIndex = 11;
+            this.button_DashBoardUpdate.Text = "Dashboard Updates";
+            this.button_DashBoardUpdate.UseVisualStyleBackColor = true;
+            this.button_DashBoardUpdate.Click += new System.EventHandler(this.button_DashBoardUpdate_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1623, 593);
+            this.Controls.Add(this.button_DashBoardUpdate);
             this.Controls.Add(this.button_Vital);
             this.Controls.Add(this.buttonInventoryLogs);
             this.Controls.Add(this.button_ChatSystem);
@@ -174,6 +186,7 @@
         private System.Windows.Forms.Button button_ChatSystem;
         private System.Windows.Forms.Button buttonInventoryLogs;
         private System.Windows.Forms.Button button_Vital;
+        private System.Windows.Forms.Button button_DashBoardUpdate;
     }
 }
 

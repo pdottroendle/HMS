@@ -20,8 +20,8 @@ namespace Hospital_Management
             InitializeComponent();
             dateTimePicker_AppTime.Value = DateTime.UtcNow;
         }
-
-        private async void button_AppAdd_Click(object sender, EventArgs e)
+        // Add button for Appoinment to let user schedule an appoinment
+        private void button_AppAdd_Click(object sender, EventArgs e)
         {
             string appointmentId = textBox_AppoinmentID.Text;
             string patientId = textBoxPatientID.Text;
@@ -40,10 +40,10 @@ namespace Hospital_Management
 
             MessageBox.Show("Appointment added or updated successfully!");
         }
-
+        // this help connect the sql database with queries
         public class AppointmentSqlHelper
         {
-            private string connectionString = "Server=OKQWERTY\\SQLEXPRESS;Database=HMSDB;Trusted_Connection=True;";
+            private string connectionString = "Server=LAPTOP-MSNOAR3O\\SQLEXPRESS01;Database=HMSDB;Trusted_Connection=True;";
 
             public void AddOrUpdateAppointment(string appointmentId, string patientId, string doctorId, DateTime dateTime, string status, string notes)
             {
@@ -75,11 +75,12 @@ namespace Hospital_Management
                 }
             }
         }
+        // search button will allow users to viewed their appoinment
 
-        private async void button_AppSearch_Click(object sender, EventArgs e)
+        private void button_AppSearch_Click(object sender, EventArgs e)
 
         {
-            string connectionString = "Server=OKQWERTY\\SQLEXPRESS;Database=HMSDB;Trusted_Connection=True;";
+            string connectionString = "Server=LAPTOP-MSNOAR3O\\SQLEXPRESS01;Database=HMSDB;Trusted_Connection=True;";
             string query = "SELECT * FROM Appointment WHERE 1=1";
 
             if (!string.IsNullOrWhiteSpace(textBox_AppoinmentID.Text))
@@ -117,7 +118,20 @@ namespace Hospital_Management
                 dataGridView_Appointment.DataSource = table;
             }
         }
-
-
+        // this button allow user to cancel an appoinment
+        private void button_AppCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to clear all fields?", "Confirm Cancel", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                textBox_AppoinmentID.Clear();
+                textBoxPatientID.Clear();
+                textBoxDoctorID.Clear();
+                comboBox_AppStatus.SelectedIndex = -1;
+                textBox_AppNotes.Clear();
+                dateTimePicker_AppTime.Value = DateTime.UtcNow;
+                dataGridView_Appointment.DataSource = null;
+            }
+        }
     }
 }

@@ -44,6 +44,7 @@
             this.sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             this.label_AppoinmentID = new System.Windows.Forms.Label();
             this.textBox_AppoinmentID = new System.Windows.Forms.TextBox();
+            this.button_AppCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Appointment)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,7 +127,7 @@
             // 
             // button_AppAdd
             // 
-            this.button_AppAdd.Location = new System.Drawing.Point(705, 517);
+            this.button_AppAdd.Location = new System.Drawing.Point(621, 517);
             this.button_AppAdd.Name = "button_AppAdd";
             this.button_AppAdd.Size = new System.Drawing.Size(122, 39);
             this.button_AppAdd.TabIndex = 5;
@@ -136,7 +137,7 @@
             // 
             // button_AppSearch
             // 
-            this.button_AppSearch.Location = new System.Drawing.Point(996, 515);
+            this.button_AppSearch.Location = new System.Drawing.Point(837, 515);
             this.button_AppSearch.Name = "button_AppSearch";
             this.button_AppSearch.Size = new System.Drawing.Size(126, 43);
             this.button_AppSearch.TabIndex = 5;
@@ -179,11 +180,22 @@
             this.textBox_AppoinmentID.Size = new System.Drawing.Size(167, 29);
             this.textBox_AppoinmentID.TabIndex = 6;
             // 
+            // button_AppCancel
+            // 
+            this.button_AppCancel.Location = new System.Drawing.Point(1082, 516);
+            this.button_AppCancel.Name = "button_AppCancel";
+            this.button_AppCancel.Size = new System.Drawing.Size(115, 41);
+            this.button_AppCancel.TabIndex = 7;
+            this.button_AppCancel.Text = "Cancel";
+            this.button_AppCancel.UseVisualStyleBackColor = true;
+            this.button_AppCancel.Click += new System.EventHandler(this.button_AppCancel_Click);
+            // 
             // Appoinment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1639, 615);
+            this.Controls.Add(this.button_AppCancel);
             this.Controls.Add(this.textBoxDoctorID);
             this.Controls.Add(this.textBox_AppoinmentID);
             this.Controls.Add(this.textBoxPatientID);
@@ -225,5 +237,6 @@
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private System.Windows.Forms.Label label_AppoinmentID;
         private System.Windows.Forms.TextBox textBox_AppoinmentID;
+        private System.Windows.Forms.Button button_AppCancel;
     }
 }

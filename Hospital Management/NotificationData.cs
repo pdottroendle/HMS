@@ -10,13 +10,8 @@ namespace Hospital_Management
 {
     public class NotificationData
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
         public string NotificationID { get; set; }
-
-        [BsonRepresentation(BsonType.ObjectId)]
         public string UserID { get; set; }
-
         public string Message { get; set; }
         public DateTime Timestamp { get; set; }
         public bool IsRead { get; set; }

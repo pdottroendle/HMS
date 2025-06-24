@@ -1,46 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Newtonsoft.Json;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Hospital_Management
 {
     public partial class Chat : Form
     {
+        // This will help to load the chat form
         public Chat()
         {
             InitializeComponent();
             textBox_Timestamp.Text = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ");
             textBox_Timestamp.ReadOnly = true;
         }
-
+        // This is the connection to SQL
         public class MessageSqlHelper
         {
-            private string connectionString = "Server=OKQWERTY\\SQLEXPRESS;Database=HMSDB;Trusted_Connection=True;";
+            private string connectionString = "Server=LAPTOP-MSNOAR3O\\SQLEXPRESS01;Database=HMSDB;Trusted_Connection=True;";
+
 
             public void AddOrUpdateMessage(string messageId, string senderId, string receiverId, DateTime timestamp, string content)
             {
+                if (string.IsNullOrWhiteSpace(messageId))
+                    throw new ArgumentException("MessageID cannot be empty.");
+
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
 
                     string query = @"
-                MERGE Message AS target
-                USING (SELECT @MessageID AS MessageID) AS source
-                ON target.MessageID = source.MessageID
-                WHEN MATCHED THEN
-                    UPDATE SET SenderID = @SenderID, ReceiverID = @ReceiverID, Timestamp = @Timestamp, Content = @Content
-                WHEN NOT MATCHED THEN
-                    INSERT (MessageID, SenderID, ReceiverID, Timestamp, Content)
-                    VALUES (@MessageID, @SenderID, @ReceiverID, @Timestamp, @Content);";
+                INSERT INTO Message (MessageID, SenderID, ReceiverID, Timestamp, Content)
+                VALUES (@MessageID, @SenderID, @ReceiverID, @Timestamp, @Content)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -55,8 +46,8 @@ namespace Hospital_Management
                 }
             }
         }
-
-        private async void buttonChatAdd_Click(object sender, EventArgs e)
+        // This button allow to add message 
+        private void buttonChatAdd_Click(object sender, EventArgs e)
         {
             string messageId = textBox_MessageID.Text;
             string senderId = textBox_SenderID.Text;
@@ -74,10 +65,10 @@ namespace Hospital_Management
 
             MessageBox.Show("Message added or updated successfully!");
         }
-
-        private async void buttonChatSearch_Click(object sender, EventArgs e)
+        // This button allow to view the message information data
+        private void buttonChatSearch_Click(object sender, EventArgs e)
         {
-            string connectionString = "Server=OKQWERTY\\SQLEXPRESS;Database=HMSDB;Trusted_Connection=True;";
+            string connectionString = "Server=LAPTOP-MSNOAR3O\\SQLEXPRESS01;Database=HMSDB;Trusted_Connection=True;";
             string query = "SELECT * FROM Message WHERE 1=1";
 
             if (!string.IsNullOrWhiteSpace(textBox_MessageID.Text))
@@ -111,6 +102,5 @@ namespace Hospital_Management
                 dataGridViewChat.DataSource = table;
             }
         }
-
     }
 }

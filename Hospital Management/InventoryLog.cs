@@ -15,6 +15,7 @@ namespace Hospital_Management
 {
     public partial class InventoryLog : Form
     {
+        // This will help to load the inventory log form
         public InventoryLog()
         {
             InitializeComponent();
@@ -22,8 +23,8 @@ namespace Hospital_Management
             textBox_LogTimestamp.Text = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ");
 
         }
-
-        private async void button_LogAdd_Click(object sender, EventArgs e)
+        // This allow to add any change for medicine 
+        private void button_LogAdd_Click(object sender, EventArgs e)
         {
             string logId = textBoxLogID.Text;
             string itemId = textBoxLogItemID.Text;
@@ -49,7 +50,7 @@ namespace Hospital_Management
         }
         public class InventoryLogSqlHelper
         {
-            private string connectionString = "Server=OKQWERTY\\SQLEXPRESS;Database=HMSDB;Trusted_Connection=True;";
+            private string connectionString = "Server=LAPTOP-MSNOAR3O\\SQLEXPRESS01;Database=HMSDB;Trusted_Connection=True;";
 
             public void AddOrUpdateInventoryLog(string logId, string itemId, int changeAmount, DateTime timestamp, string userId, string reason)
             {
@@ -82,47 +83,93 @@ namespace Hospital_Management
             }
         }
 
+        // This button will help to view the data
 
-        private async void button_LogSearch_Click(object sender, EventArgs e)
+        private void button_LogSearch_Click(object sender, EventArgs e)
         {
-            string connectionString = "Server=OKQWERTY\\SQLEXPRESS;Database=HMSDB;Trusted_Connection=True;";
+            string connectionString = "Server=LAPTOP-MSNOAR3O\\SQLEXPRESS01;Database=HMSDB;Trusted_Connection=True;";
             string query = "SELECT * FROM InventoryLog WHERE 1=1";
 
-            if (!string.IsNullOrWhiteSpace(textBoxLogID.Text))
-                query += " AND LogID = @LogID";
-            if (!string.IsNullOrWhiteSpace(textBoxLogItemID.Text))
-                query += " AND ItemID = @ItemID";
-            if (!string.IsNullOrWhiteSpace(textBox_LogChange.Text))
-                query += " AND ChangeAmount = @ChangeAmount";
-            if (!string.IsNullOrWhiteSpace(textBox_LogTimestamp.Text))
-                query += " AND Timestamp = @Timestamp";
-            if (!string.IsNullOrWhiteSpace(textBox_LogUserID.Text))
-                query += " AND UserID = @UserID";
-            if (!string.IsNullOrWhiteSpace(textBox_LogReason.Text))
-                query += " AND Reason LIKE @Reason";
-
             using (SqlConnection conn = new SqlConnection(connectionString))
-            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlCommand cmd = new SqlCommand())
             {
-                if (!string.IsNullOrWhiteSpace(textBoxLogID.Text))
-                    cmd.Parameters.AddWithValue("@LogID", textBoxLogID.Text);
-                if (!string.IsNullOrWhiteSpace(textBoxLogItemID.Text))
-                    cmd.Parameters.AddWithValue("@ItemID", textBoxLogItemID.Text);
-                if (!string.IsNullOrWhiteSpace(textBox_LogChange.Text))
-                    cmd.Parameters.AddWithValue("@ChangeAmount", int.Parse(textBox_LogChange.Text));
-                if (!string.IsNullOrWhiteSpace(textBox_LogTimestamp.Text))
-                    cmd.Parameters.AddWithValue("@Timestamp", DateTime.Parse(textBox_LogTimestamp.Text));
-                if (!string.IsNullOrWhiteSpace(textBox_LogUserID.Text))
-                    cmd.Parameters.AddWithValue("@UserID", textBox_LogUserID.Text);
-                if (!string.IsNullOrWhiteSpace(textBox_LogReason.Text))
-                    cmd.Parameters.AddWithValue("@Reason", "%" + textBox_LogReason.Text + "%");
+                cmd.Connection = conn;
 
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-                dataGridViewInventoryLog.DataSource = table;
+                if (!string.IsNullOrWhiteSpace(textBoxLogID.Text))
+                {
+                    query += " AND LogID = @LogID";
+                    cmd.Parameters.AddWithValue("@LogID", textBoxLogID.Text);
+                }
+
+                if (!string.IsNullOrWhiteSpace(textBoxLogItemID.Text))
+                {
+                    query += " AND ItemID = @ItemID";
+                    cmd.Parameters.AddWithValue("@ItemID", textBoxLogItemID.Text);
+                }
+
+                if (!string.IsNullOrWhiteSpace(textBox_LogChange.Text))
+                {
+                    if (int.TryParse(textBox_LogChange.Text, out int changeAmount))
+                    {
+                        query += " AND ChangeAmount = @ChangeAmount";
+                        cmd.Parameters.AddWithValue("@ChangeAmount", changeAmount);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a valid number for Change Amount.");
+                        return;
+                    }
+                }
+
+                if (!string.IsNullOrWhiteSpace(textBox_LogTimestamp.Text))
+                {
+                    if (DateTime.TryParse(textBox_LogTimestamp.Text, out DateTime timestamp))
+                    {
+                        // Optional: compare only date part
+                        query += " AND CAST(Timestamp AS DATE) = @Timestamp";
+                        cmd.Parameters.AddWithValue("@Timestamp", timestamp.Date);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a valid date for Timestamp.");
+                        return;
+                    }
+                }
+
+                if (!string.IsNullOrWhiteSpace(textBox_LogUserID.Text))
+                {
+                    query += " AND UserID = @UserID";
+                    cmd.Parameters.AddWithValue("@UserID", textBox_LogUserID.Text);
+                }
+
+                if (!string.IsNullOrWhiteSpace(textBox_LogReason.Text))
+                {
+                    query += " AND Reason LIKE @Reason";
+                    cmd.Parameters.AddWithValue("@Reason", "%" + textBox_LogReason.Text + "%");
+                }
+
+                cmd.CommandText = query;
+
+                try
+                {
+                    conn.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
+                    dataGridViewInventoryLog.DataSource = table;
+
+                    if (table.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No records found.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error during search: " + ex.Message);
+                }
             }
         }
+
 
 
     }
